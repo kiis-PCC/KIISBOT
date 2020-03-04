@@ -82,12 +82,8 @@ def handle_image_message(event):
         event.reply_token,
         TextSendMessage(text="もう一度おねがいします。"))
 
-if __name__ == "__main__":
-    arg_parser = ArgumentParser(
-        usage='Usage: python ' + __file__ + ' [--port <port>] [--help]'
-    )
-    arg_parser.add_argument('-p', '--port', type=int, default=8000, help='port')
-    arg_parser.add_argument('-d', '--debug', default=False, help='debug')
-    options = arg_parser.parse_args()
 
-    app.run(debug=options.debug, port=options.port)
+if __name__ == "__main__":
+#    app.run()
+    port = int(os.getenv("PORT"))
+    app.run(host="0.0.0.0", port=port)
