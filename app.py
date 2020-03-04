@@ -72,7 +72,7 @@ def callback():
 @handler.add(MessageEvent, message=(TextMessage))
 def handle_image_message(event):
     text = event.message.text
-    if text = in ['サイト','web','さいと',"site"]:
+    if text in ['サイト','web','さいと',"site"]:
         messages = make_button_template()
         line_bot_api.reply_message(
         event.reply_token,
