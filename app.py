@@ -79,8 +79,8 @@ def handle_image_message(event):
         messages)
     else:
         line_bot_api.reply_message(
-　　　　　event.reply_token,
-　　　　　TextSendMessage(text="もう一度おねがいします。"))
+        event.reply_token,
+        TextSendMessage(text="もう一度おねがいします。"))
 
 if __name__ == "__main__":
     arg_parser = ArgumentParser(
