@@ -27,7 +27,7 @@ def kiis_button():
         template=ButtonsTemplate(
             text="九州情報大学のwebサイトです",
             title="九州情報大学",
-            image_size='',
+            image_size='cover',
             thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/img_top_bnr02.jpg",
             actions=[
                 URIAction(
