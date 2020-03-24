@@ -57,6 +57,38 @@ def bus_button():
     )
     return message_template
 
+def questionnaire_button():
+    message_template = TemplateSendMessage(
+        alt_text="授業改善アンケート",
+        template=ButtonsTemplate(
+            text="授業改善アンケートです",
+            title="アンケート",
+            actions=[
+                URIAction(
+                    uri="sun.kiis.ac.jp/",
+                    label="push!"
+                )
+            ]
+        )
+    )
+    return message_template
+
+def service_button():
+    message_template = TemplateSendMessage(
+        alt_text="情報処理室",
+        template=ButtonsTemplate(
+            text="サービスメニューです",
+            title="情報処理室",
+            actions=[
+                URIAction(
+                    uri="http://service.kiis.ac.jp/",
+                    label="push!"
+                )
+            ]
+        )
+    )
+    return message_template
+
 
 @app.route("/")
 def hello_world():
@@ -84,13 +116,23 @@ def callback():
 @handler.add(MessageEvent, message=(TextMessage))
 def handle_image_message(event):
     text = event.message.text
-    if text in ['サイト','web','さいと','site','kiis']:
+    if text in ['サイト','web','さいと','site','kiis','Web','KIIS']:
         messages = kiis_button()
         line_bot_api.reply_message(
         event.reply_token,
         messages)
-    elif text in ['バス','ばす','buss']:
+    elif text in ['バス','ばす','bus','Bus']:
         messages = bus_button()
+        line_bot_api.reply_message(
+        event.reply_token,
+        messages)
+    elif text in ['アンケート','改善','評価']:
+        messages = questionnaire_button()
+        line_bot_api.reply_message(
+        event.reply_token,
+        messages)
+    elif text in ['情報処理室','サービス','メニュー','service']:
+        messages = service_button()
         line_bot_api.reply_message(
         event.reply_token,
         messages)
