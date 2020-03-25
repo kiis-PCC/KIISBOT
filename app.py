@@ -63,9 +63,10 @@ def questionnaire_button():
         template=ButtonsTemplate(
             text="授業改善アンケートです",
             title="アンケート",
+            image_size="cover",
             actions=[
                 URIAction(
-                    uri="sun.kiis.ac.jp/",
+                    uri="http://sun.kiis.ac.jp/",
                     label="push!"
                 )
             ]
@@ -79,6 +80,7 @@ def service_button():
         template=ButtonsTemplate(
             text="サービスメニューです",
             title="情報処理室",
+            image_size="cover",
             actions=[
                 URIAction(
                     uri="http://service.kiis.ac.jp/",
