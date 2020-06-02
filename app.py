@@ -64,6 +64,7 @@ def questionnaire_button():
             text="授業改善アンケートです",
             title="アンケート",
             image_size="cover",
+            thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg"
             actions=[
                 URIAction(
                     uri="http://sun.kiis.ac.jp/",
@@ -78,9 +79,10 @@ def service_button():
     message_template = TemplateSendMessage(
         alt_text="情報処理室",
         template=ButtonsTemplate(
-            text="サービスメニューです",
+            text="パスワード変更はこちらから",
             title="情報処理室",
             image_size="cover",
+            thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg"
             actions=[
                 URIAction(
                     uri="http://service.kiis.ac.jp/",
@@ -133,11 +135,15 @@ def handle_image_message(event):
         line_bot_api.reply_message(
         event.reply_token,
         messages)
-    elif text in ['情報処理室','サービス','メニュー','service']:
+    elif text in ['情報処理室','サービス','メニュー','service', 'password', 'パスワード']:
         messages = service_button()
         line_bot_api.reply_message(
         event.reply_token,
         messages)
+    elif text in ['その他']:
+        line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text="どのような要件ですか？"))
     else:
         line_bot_api.reply_message(
         event.reply_token,
