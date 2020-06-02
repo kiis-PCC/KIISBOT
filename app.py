@@ -64,7 +64,7 @@ def questionnaire_button():
             text="授業改善アンケートです",
             title="アンケート",
             image_size="cover",
-            thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg"
+            thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
             actions=[
                 URIAction(
                     uri="http://sun.kiis.ac.jp/",
@@ -82,7 +82,7 @@ def service_button():
             text="パスワード変更はこちらから",
             title="情報処理室",
             image_size="cover",
-            thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg"
+            thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
             actions=[
                 URIAction(
                     uri="http://service.kiis.ac.jp/",
