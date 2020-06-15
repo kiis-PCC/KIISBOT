@@ -121,9 +121,7 @@ def callback():
 @handler.add(MessageEvent, message=(TextMessage))
 def handle_image_message(event):
     text = event.message.text
-    tok = Tokenizer()
-    for token in tok.tokenize(text):
-        print(token)
+    
     if text in ['サイト','web','さいと','site','kiis','Web','KIIS','webサイト']:
         messages = kiis_button()
         line_bot_api.reply_message(
