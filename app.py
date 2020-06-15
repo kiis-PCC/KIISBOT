@@ -126,11 +126,11 @@ def handle_image_message(event):
     for token in tokens:
     # 品詞を取り出し
         partOfSpeech = token.part_of_speech.split(',')[0]
-        surface = token.surface
+        
         if partOfSpeech == u'名詞':
             line_bot_api.reply_message(
             event.reply_token,
-            surface)
+            TextSendMessage(text=token.surface))
 
     if text in ['サイト','web','さいと','site','kiis','Web','KIIS','webサイト']:
         messages = kiis_button()
