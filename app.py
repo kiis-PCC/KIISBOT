@@ -9,7 +9,7 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage, 
     TemplateSendMessage,ButtonsTemplate,URIAction,ImageSendMessage
 )
-import os
+import os, MeCab, requests
 
 app = Flask(__name__)
 
