@@ -1,5 +1,4 @@
 from flask import Flask, request, abort
-from janome.tokenizer import Tokenizer
 from linebot import (
     LineBotApi, WebhookHandler
 )
@@ -121,16 +120,7 @@ def callback():
 @handler.add(MessageEvent, message=(TextMessage))
 def handle_image_message(event):
     text = event.message.text
-    t = Tokenizer()
-    tokens = t.tokenize(text)
-    for token in tokens:
-    # 品詞を取り出し
-        partOfSpeech = token.part_of_speech.split(',')[0]
-        
-        if partOfSpeech == u'名詞':
-            line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=token.surface))
+    
 
     if text in ['サイト','web','さいと','site','kiis','Web','KIIS','webサイト']:
         messages = kiis_button()
