@@ -161,7 +161,7 @@ def handle_image_message(event):
         event.reply_token,
         messages)
     elif text in ['遠隔','遠隔授業','remote','授業']:
-        messages = service_button()
+        messages = enkaku_button()
         line_bot_api.reply_message(
         event.reply_token,
         messages)
