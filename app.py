@@ -93,6 +93,24 @@ def service_button():
     )
     return message_template
 
+def enkaku_button():
+    message_template = TemplateSendMessage(
+        alt_text="遠隔授業",
+        template=ButtonsTemplate(
+            text="遠隔授業",
+            title="遠隔授業",
+            image_size="cover",
+            thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+            actions=[
+                URIAction(
+                    uri="http://service.kiis.ac.jp/gakunai/enkaku",
+                    label="push!"
+                )
+            ]
+        )
+    )
+    return message_template
+
 
 @app.route("/")
 def hello_world():
@@ -138,6 +156,11 @@ def handle_image_message(event):
         event.reply_token,
         messages)
     elif text in ['情報処理室','サービス','メニュー','service', 'password', 'パスワード']:
+        messages = service_button()
+        line_bot_api.reply_message(
+        event.reply_token,
+        messages)
+    elif text in ['遠隔','遠隔授業','remote','授業']:
         messages = service_button()
         line_bot_api.reply_message(
         event.reply_token,
