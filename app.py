@@ -103,7 +103,7 @@ def enkaku_button():
             thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
             actions=[
                 URIAction(
-                    uri="http://kiis.ac.jp/gakunai/enkaku",
+                    uri="https://www.kiis.ac.jp/gakunai/enkaku",
                     label="push!"
                 )
             ]
