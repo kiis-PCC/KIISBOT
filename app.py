@@ -97,13 +97,31 @@ def enkaku_button():
     message_template = TemplateSendMessage(
         alt_text="遠隔授業",
         template=ButtonsTemplate(
-            text="遠隔授業",
+            text="遠隔授業の一覧です",
             title="遠隔授業",
             image_size="cover",
             thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
             actions=[
                 URIAction(
                     uri="https://www.kiis.ac.jp/gakunai/enkaku",
+                    label="push!"
+                )
+            ]
+        )
+    )
+    return message_template
+
+def campusplan_button():
+    message_template = TemplateSendMessage(
+        alt_text="CampusPlan",
+        template=ButtonsTemplate(
+            text="履修登録はこちらから",
+            title="CampusPlan",
+            image_size="cover",
+            thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+            actions=[
+                URIAction(
+                    uri="https://kiis-web.campusplan.jp/gakusei/web/CplanMenuWeb/UI/LoginForm.aspx",
                     label="push!"
                 )
             ]
@@ -162,6 +180,11 @@ def handle_image_message(event):
         messages)
     elif text in ['遠隔','遠隔授業','remote','授業']:
         messages = enkaku_button()
+        line_bot_api.reply_message(
+        event.reply_token,
+        messages)
+    elif text in ['履修','履修登録','履修確認','成績','campusplan','CampusPlan','Campusplan']:
+        messages = campusplan_button()
         line_bot_api.reply_message(
         event.reply_token,
         messages)
