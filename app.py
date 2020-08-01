@@ -94,6 +94,7 @@ def handle_message(event):
             meishi_list.append(node.surface)
         print(node.surface,'  ',node.feature)
         node = node.next
+        mojiretsu = ','.join(meishi_list)
 
     for m in meishi_list:
 
