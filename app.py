@@ -220,10 +220,6 @@ def handle_message(event):
                 columns.append(result)
                 campusplan_count = campusplan_count + 1
 
-        # if m in ['カルーセル']:
-        #     test = carousel_test()
-        #     ans_list.append(test)
-
 
         if m in ['その他']:
             line_bot_api.reply_message(
@@ -231,12 +227,7 @@ def handle_message(event):
             TextSendMessage(text="どのような要件ですか？"))
             break
 
-    # mojiretsu = ','.join(ans_list)
-    # print(mojiretsu)
-
-    # line_bot_api.reply_message(
-    # event.reply_token,
-    # ans_list)
+ 
     if not columns:
         moji = TextSendMessage(text="一致する言葉がありませんでした。")
         messages = TextSendMessage(text="もう一度おねがいします。")
