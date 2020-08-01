@@ -79,6 +79,14 @@ def handle_message(event):
 
     
     meishi_list=[] 
+
+    # 各変数のカウンター
+    kiis_count = 0
+    bus_count = 0
+    questionnaire_count = 0
+    service_count = 0
+    enkaku_count = 0
+    campusplan_count = 0
     
 
     while node:
@@ -90,95 +98,130 @@ def handle_message(event):
     for m in meishi_list:
 
         if m in ['サイト','web','さいと','site','kiis','Web','KIIS','webサイト']:
-            result = CarouselColumn(
-                    thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/img_top_bnr02.jpg",
-                    text="九州情報大学のwebサイトです",
-                    title="九州情報大学",
-                    actions=[
-                        URIAction(
-                            uri="https://www.kiis.ac.jp/",
-                            label="push!"
-                        )
-                    ]
-                )
-            columns.append(result)
-
+            # messages_kiis = kiis_button()
+            # ans_list.append(messages_kiis)
+            if kiis_count > 0:
+                kiis_count = kiis_count + 1
+            else:
+                result = CarouselColumn(
+                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/img_top_bnr02.jpg",
+                        text="九州情報大学のwebサイトです",
+                        title="九州情報大学",
+                        actions=[
+                            URIAction(
+                                uri="https://www.kiis.ac.jp/",
+                                label="push!"
+                            )
+                        ]
+                    )
+                columns.append(result)
+                kiis_count = kiis_count + 1
             
-
+            
         if m in ['バス','ばす','bus','Bus']:
-            result = CarouselColumn(
-                    thumbnail_image_url="https://www.kiis.ac.jp/wp-content/uploads/2018/03/img_information_bus_01_02.jpg",
-                    text="九州情報大学バスの時刻表です",
-                    title="バスの時刻表",
-                    actions=[
-                        URIAction(
-                            uri="https://www.kiis.ac.jp/information/bus/",
-                            label="push!"
-                        )
-                    ]
-                )
-            columns.append(result)
-    
+            # messages_bus = bus_button()
+            # ans_list.append(messages_bus)
+            if bus_count > 0:
+                bus_count = bus_count + 1
+            else:
+                result = CarouselColumn(
+                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/uploads/2018/03/img_information_bus_01_02.jpg",
+                        text="九州情報大学バスの時刻表です",
+                        title="バスの時刻表",
+                        actions=[
+                            URIAction(
+                                uri="https://www.kiis.ac.jp/information/bus/",
+                                label="push!"
+                            )
+                        ]
+                    )
+                columns.append(result)
+                bus_count = bus_count + 1
 
         if m in ['アンケート','改善','評価']:
-            result = CarouselColumn(
-                    thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
-                    text="授業改善アンケートです",
-                    title="アンケート",
-                    actions=[
-                        URIAction(
-                            uri="http://sun.kiis.ac.jp/",
-                            label="push!"
-                        )
-                    ]
-                )
-            columns.append(result)
-            
+            # messages_questionnaire = questionnaire_button()
+            # ans_list.append(messages_questionnaire)
+            if questionnaire_count > 0:
+                questionnaire_count = questionnaire_count + 1
+            else:
+                result = CarouselColumn(
+                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        text="授業改善アンケートです",
+                        title="アンケート",
+                        actions=[
+                            URIAction(
+                                uri="http://sun.kiis.ac.jp/",
+                                label="push!"
+                            )
+                        ]
+                    )
+                columns.append(result)
+                questionnaire_count = questionnaire_count + 1
 
 
         if m in ['情報処理室','サービス','メニュー','service', 'password', 'パスワード']:
-            result = CarouselColumn(
-                    thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
-                    text="パスワード変更はこちらから",
-                    title="情報処理室",
-                    actions=[
-                        URIAction(
-                            uri="http://service.kiis.ac.jp/",
-                            label="push!"
-                        )
-                    ]
-                )
-            columns.append(result)
-
+            # messages_service = service_button()
+            # ans_list.append(messages_service)
+            if service_count > 0:
+                service_count = service_count + 1
+            else:
+                result = CarouselColumn(
+                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        text="パスワード変更はこちらから",
+                        title="情報処理室",
+                        actions=[
+                            URIAction(
+                                uri="http://service.kiis.ac.jp/",
+                                label="push!"
+                            )
+                        ]
+                    )
+                columns.append(result)
+                service_count = service_count + 1
 
         if m in ['遠隔','遠隔授業','remote','授業']:
-            result = CarouselColumn(
-                    thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
-                    text="遠隔授業の一覧です",
-                    title="遠隔授業",
-                    actions=[
-                        URIAction(
-                            uri="https://www.kiis.ac.jp/gakunai/enkaku",
-                            label="push!"
-                        )
-                    ]
-                )
-            columns.append(result)
-
+            # messages_enkaku = enkaku_button()
+            # ans_list.append(messages_enkaku)
+            if enkaku_count > 0:
+                enkaku_count = enkaku_count + 1
+            else:
+                result = CarouselColumn(
+                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        text="遠隔授業の一覧です",
+                        title="遠隔授業",
+                        actions=[
+                            URIAction(
+                                uri="https://www.kiis.ac.jp/gakunai/enkaku",
+                                label="push!"
+                            )
+                        ]
+                    )
+                columns.append(result)
+                enkaku_count = enkaku_count + 1
 
         if m in ['履修','履修登録','履修確認','成績','campusplan','CampusPlan','Campusplan']:
-            result = CarouselColumn(
-                    thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
-                    text="履修登録はこちらから",
-                    title="CampusPlan",
-                    actions=[
-                        URIAction(
-                            uri="https://kiis-web.campusplan.jp/gakusei/web/CplanMenuWeb/UI/LoginForm.aspx",
-                            label="push!"
-                        )
-                    ]
-                )
-            columns.append(result)
+            # messages_campusplan = campusplan_button()
+            # ans_list.append(messages_campusplan)
+            if campusplan_count > 0:
+                campusplan_count = campusplan_count + 1
+            else:
+                result = CarouselColumn(
+                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        text="履修登録はこちらから",
+                        title="CampusPlan",
+                        actions=[
+                            URIAction(
+                                uri="https://kiis-web.campusplan.jp/gakusei/web/CplanMenuWeb/UI/LoginForm.aspx",
+                                label="push!"
+                            )
+                        ]
+                    )
+                columns.append(result)
+                campusplan_count = campusplan_count + 1
+
+        # if m in ['カルーセル']:
+        #     test = carousel_test()
+        #     ans_list.append(test)
 
 
         if m in ['その他']:
@@ -187,29 +230,40 @@ def handle_message(event):
             TextSendMessage(text="どのような要件ですか？"))
             break
 
-    messages = carousel()
+    # mojiretsu = ','.join(ans_list)
+    # print(mojiretsu)
+
+    # line_bot_api.reply_message(
+    # event.reply_token,
+    # ans_list)
+    if not columns:
+        moji = TextSendMessage(text="一致する言葉がありませんでした。")
+        messages = TextSendMessage(text="もう一度おねがいします。")
+    else:
+        moji = TextSendMessage(text=mojiretsu + ' を検知しました。')
+        messages = carousel()
+        
 
     line_bot_api.reply_message(
     event.reply_token,
-    messages)
+    [moji, messages])
     
     columns.clear()
 
-  
 
-logging.debug("デバッグ")
-logging.info("情報")
- 
-# if __name__ == "__main__":
-#     app.run(host="localhost", port=8000)   # ポート番号を8000に指定
+    logging.debug("デバッグ")
+    logging.info("情報")
+    
+    # if __name__ == "__main__":
+    #     app.run(host="localhost", port=8000)   # ポート番号を8000に指定
 
-if __name__ == "__main__":
-    arg_parser = ArgumentParser(
-        usage='Usage: python ' + __file__ + ' [--port <port>] [--help]'
-    )
-    arg_parser.add_argument('-p', '--port', type=int, default=int(os.environ.get('PORT', 8000)), help='port')
-    arg_parser.add_argument('-d', '--debug', default=False, help='debug')
-    arg_parser.add_argument('--host', default='0.0.0.0', help='host')
-    options = arg_parser.parse_args()
+    if __name__ == "__main__":
+        arg_parser = ArgumentParser(
+            usage='Usage: python ' + __file__ + ' [--port <port>] [--help]'
+        )
+        arg_parser.add_argument('-p', '--port', type=int, default=int(os.environ.get('PORT', 8000)), help='port')
+        arg_parser.add_argument('-d', '--debug', default=False, help='debug')
+        arg_parser.add_argument('--host', default='0.0.0.0', help='host')
+        options = arg_parser.parse_args()
 
-    app.run(debug=options.debug, host=options.host, port=options.port)
+        app.run(debug=options.debug, host=options.host, port=options.port)
