@@ -1,4 +1,4 @@
-import config   # 先ほど作成したconfig.pyをインポート
+# import config   # 先ほど作成したconfig.pyをインポート
 from flask import Flask, request, abort
 from argparse import ArgumentParser
  
