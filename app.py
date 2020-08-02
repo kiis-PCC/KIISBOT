@@ -1,3 +1,4 @@
+import config   # 先ほど作成したconfig.pyをインポート
 from flask import Flask, request, abort
 from argparse import ArgumentParser
  
@@ -25,9 +26,12 @@ logging.basicConfig(
 app = Flask(__name__)
 
 mecab = MeCab.Tagger ("-Owakati")
+# mecab = MeCab.Tagger ("-Ochasen")
 mecab.parse('')
  
-
+# line_bot_api = LineBotApi(config.LINE_CHANNEL_ACCESS_TOKEN)    # config.pyで設定したチャネルアクセストークン
+# handler = WebhookHandler(config.LINE_CHANNEL_SECRET)    # config.pyで設定したチャネルシークレット
+ 
 #環境変数取得
 ACCESS_TOKEN = os.environ["YOUR_CHANNEL_ACCESS_TOKEN"]
 SECRET = os.environ["YOUR_CHANNEL_SECRET"]
@@ -36,7 +40,6 @@ line_bot_api = LineBotApi(ACCESS_TOKEN)
 handler = WebhookHandler(SECRET)
 
 columns = []
-
 
 def carousel():
     carousel_template_message = TemplateSendMessage(
@@ -79,6 +82,8 @@ def handle_message(event):
 
     
     meishi_list=[] 
+
+    # site = kiis_button()
 
     # 各変数のカウンター
     kiis_count = 0
@@ -220,14 +225,14 @@ def handle_message(event):
                 columns.append(result)
                 campusplan_count = campusplan_count + 1
 
-
+    
         if m in ['その他']:
             line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="どのような要件ですか？"))
             break
 
- 
+   
     if not columns:
         moji = TextSendMessage(text="一致する言葉がありませんでした。")
         messages = TextSendMessage(text="もう一度おねがいします。")
@@ -243,19 +248,19 @@ def handle_message(event):
     columns.clear()
 
 
-    logging.debug("デバッグ")
-    logging.info("情報")
-    
-    # if __name__ == "__main__":
-    #     app.run(host="localhost", port=8000)   # ポート番号を8000に指定
+logging.debug("デバッグ")
+logging.info("情報")
+ 
+# if __name__ == "__main__":
+#     app.run(host="localhost", port=8000)   # ポート番号を8000に指定
 
-    if __name__ == "__main__":
-        arg_parser = ArgumentParser(
-            usage='Usage: python ' + __file__ + ' [--port <port>] [--help]'
-        )
-        arg_parser.add_argument('-p', '--port', type=int, default=int(os.environ.get('PORT', 8000)), help='port')
-        arg_parser.add_argument('-d', '--debug', default=False, help='debug')
-        arg_parser.add_argument('--host', default='0.0.0.0', help='host')
-        options = arg_parser.parse_args()
+if __name__ == "__main__":
+    arg_parser = ArgumentParser(
+        usage='Usage: python ' + __file__ + ' [--port <port>] [--help]'
+    )
+    arg_parser.add_argument('-p', '--port', type=int, default=int(os.environ.get('PORT', 8000)), help='port')
+    arg_parser.add_argument('-d', '--debug', default=False, help='debug')
+    arg_parser.add_argument('--host', default='0.0.0.0', help='host')
+    options = arg_parser.parse_args()
 
-        app.run(debug=options.debug, host=options.host, port=options.port)
+    app.run(debug=options.debug, host=options.host, port=options.port)
