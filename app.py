@@ -92,6 +92,8 @@ def handle_message(event):
     service_count = 0
     enkaku_count = 0
     campusplan_count = 0
+    qa_count = 0
+    setup_count = 0
     
 
     while node:
