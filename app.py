@@ -229,7 +229,7 @@ def handle_message(event):
             # messages_enkaku = enkaku_button()
             # ans_list.append(messages_enkaku)
             if qa_count > 0:
-                qa_count =qa_count + 1
+                qa_count = qa_count + 1
             else:
                 result = CarouselColumn(
                         thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
