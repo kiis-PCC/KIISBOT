@@ -225,6 +225,45 @@ def handle_message(event):
                 columns.append(result)
                 campusplan_count = campusplan_count + 1
 
+        if m in ['qa', 'q&a', 'Q&A', 'まとめ', '質問']:
+            # messages_enkaku = enkaku_button()
+            # ans_list.append(messages_enkaku)
+            if qa_count > 0:
+                qa_count =qa_count + 1
+            else:
+                result = CarouselColumn(
+                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        text="九州情報大学のQ＆Aサイトです",
+                        title="九州情報大学Q＆A",
+                        actions=[
+                            URIAction(
+                                uri="https://arcane-savannah-59524.herokuapp.com/index",
+                                label="push!"
+                            )
+                        ]
+                    )
+                columns.append(result)
+                qa_count = qa_count + 1
+
+        if m in ['setup', '設定', 'アカウント', 'account']:
+            # messages_enkaku = enkaku_button()
+            # ans_list.append(messages_enkaku)
+            if setup_count > 0:
+                setup_count = setup_count + 1
+            else:
+                result = CarouselColumn(
+                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        text="九州情報大学のQ＆Aサイトです",
+                        title="九州情報大学Q＆A",
+                        actions=[
+                            URIAction(
+                                uri="https://arcane-savannah-59524.herokuapp.com/setup",
+                                label="push!"
+                            )
+                        ]
+                    )
+                columns.append(result)
+                setup_count = setup_count + 1
     
         if m in ['その他']:
             line_bot_api.reply_message(
