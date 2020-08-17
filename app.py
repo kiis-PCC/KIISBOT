@@ -94,6 +94,7 @@ def handle_message(event):
     campusplan_count = 0
     qa_count = 0
     setup_count = 0
+    attendance_count = 0
     
 
     while node:
@@ -158,7 +159,7 @@ def handle_message(event):
                         title="アンケート",
                         actions=[
                             URIAction(
-                                uri="http://sun.kiis.ac.jp/",
+                                uri="https://kiis.online/enquete/enquete.php",
                                 label="push!"
                             )
                         ]
@@ -255,8 +256,8 @@ def handle_message(event):
             else:
                 result = CarouselColumn(
                         thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
-                        text="九州情報大学のQ＆Aサイトです",
-                        title="九州情報大学Q＆A",
+                        text="setupアカウント作成手順",
+                        title="setup",
                         actions=[
                             URIAction(
                                 uri="https://arcane-savannah-59524.herokuapp.com/setup",
@@ -266,6 +267,26 @@ def handle_message(event):
                     )
                 columns.append(result)
                 setup_count = setup_count + 1
+
+        if m in ['出席', 'attendance']:
+            # messages_enkaku = enkaku_button()
+            # ans_list.append(messages_enkaku)
+            if attendance_count > 0:
+                attendance_count = attendance_count + 1
+            else:
+                result = CarouselColumn(
+                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        text="九州情報大学出席くん(kiis.online)です",
+                        title="九州情報大学出席くん",
+                        actions=[
+                            URIAction(
+                                uri="https://kiis.online",
+                                label="push!"
+                            )
+                        ]
+                    )
+                columns.append(result)
+                attendance_count = attendance_count + 1
     
         if m in ['その他']:
             line_bot_api.reply_message(
