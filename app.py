@@ -95,6 +95,7 @@ def handle_message(event):
     qa_count = 0
     setup_count = 0
     attendance_count = 0
+    wifi_count = 0
     
 
     while node:
@@ -287,6 +288,28 @@ def handle_message(event):
                     )
                 columns.append(result)
                 attendance_count = attendance_count + 1
+
+        if m in ["wifi","Wifi","Wi","wi","network","Network","ネットワーク","接続","設定","ワイファイ"]:
+            # messages_enkaku = enkaku_button()
+            # ans_list.append(messages_enkaku)
+            if wifi_count > 0:
+                wifi_count = wifi_count + 1
+            else:
+                result = CarouselColumn(
+                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        text="setupアカウント作成手順",
+                        title="setup",
+                        actions=[
+                            URIAction(
+                                uri="https://arcane-savannah-59524.herokuapp.com/nw_info",
+                                label="push!"
+                            )
+                        ]
+                    )
+                columns.append(result)
+                wifi_count = wifi_count + 1
+
+        
     
         if m in ['その他']:
             line_bot_api.reply_message(
