@@ -297,8 +297,8 @@ def handle_message(event):
             else:
                 result = CarouselColumn(
                         thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
-                        text="setupアカウント作成手順",
-                        title="setup",
+                        text="Wi-fi(KIISWLAN)の設定",
+                        title="Wi-Fiの設定",
                         actions=[
                             URIAction(
                                 uri="https://arcane-savannah-59524.herokuapp.com/nw_info",
