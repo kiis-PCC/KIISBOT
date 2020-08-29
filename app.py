@@ -253,7 +253,7 @@ def handle_message(event):
                             )
                         ]
                     )
-                columns.append(result)
+            columns.append(result)
 
         if c == "campusplan_count":
             result = CarouselColumn(
@@ -267,7 +267,7 @@ def handle_message(event):
                             )
                         ]
                     )
-                columns.append(result)
+            columns.append(result)
 
         if c == "qa_count":
             result = CarouselColumn(
@@ -281,7 +281,7 @@ def handle_message(event):
                             )
                         ]
                     )
-                columns.append(result)
+            columns.append(result)
 
         if c == "setup_count":
             result = CarouselColumn(
@@ -295,7 +295,7 @@ def handle_message(event):
                             )
                         ]
                     )
-                columns.append(result)
+            columns.append(result)
 
         if c == "attendance_count":
             result = CarouselColumn(
@@ -309,7 +309,7 @@ def handle_message(event):
                             )
                         ]
                     )
-                columns.append(result)
+            columns.append(result)
 
         if c == "wifi_count":
             result = CarouselColumn(
@@ -323,7 +323,7 @@ def handle_message(event):
                             )
                         ]
                     )
-                columns.append(result)
+            columns.append(result)
 
         # if m in ['サイト','web','さいと','site','kiis','Web','KIIS','webサイト']:
         #     # messages_kiis = kiis_button()
