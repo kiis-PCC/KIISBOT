@@ -17,6 +17,7 @@ from linebot.models import (
 import os, MeCab,requests
 import logging
 import datetime
+import pytz
 
 logging.basicConfig(
     level=logging.DEBUG,
