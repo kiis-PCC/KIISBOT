@@ -561,7 +561,7 @@ def handle_message(event):
             ])))
 
     # 時刻取得
-    date = datetime.datetime.now()
+    date = datetime.datetime.now(pytz.timezone('Asia/Tokyo')
     hour = date.hour
     minute = date.minute
     # 大学発のバスのリスト 
@@ -633,10 +633,6 @@ def handle_message(event):
         moji = TextSendMessage(text=mojiretsu + ' を検知しました。')
         messages = carousel()
         
-
-        # reply_tokenが特定の値だった場合に処理終了
-    if event.reply_token == "00000000000000000000000000000000":
-        return
 
     line_bot_api.reply_message(
     event.reply_token,
