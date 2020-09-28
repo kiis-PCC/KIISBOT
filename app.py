@@ -562,7 +562,7 @@ def handle_message(event):
             ])))
 
     # 時刻取得
-    date = datetime.datetime.now(pytz.timezone('Asia/Tokyo')
+    date = datetime.datetime.now(pytz.timezone('Asia/Tokyo'))
     hour = date.hour
     minute = date.minute
     # 大学発のバスのリスト 
