@@ -11,7 +11,7 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage, 
     TemplateSendMessage,ButtonsTemplate,URIAction,ImageSendMessage,
-    CarouselTemplate,CarouselColumn, MessageAction, PostbackAction
+    CarouselTemplate,CarouselColumn, MessageAction, PostbackAction, QuickReply, QuickReplyButton
 )
 # from memory_profiler import profile
 import os, MeCab,requests
