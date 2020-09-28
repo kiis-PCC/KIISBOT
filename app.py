@@ -23,16 +23,16 @@ logging.basicConfig(
     format='%(asctime)s %(levelname)-8s %(module)-18s %(funcName)-10s %(lineno)4s: %(message)s'
 )
 
- 
+
 app = Flask(__name__)
 
 mecab = MeCab.Tagger ("-Owakati")
 # mecab = MeCab.Tagger ("-Ochasen")
 mecab.parse('')
- 
+
 # line_bot_api = LineBotApi(config.LINE_CHANNEL_ACCESS_TOKEN)    # config.pyで設定したチャネルアクセストークン
 # handler = WebhookHandler(config.LINE_CHANNEL_SECRET)    # config.pyで設定したチャネルシークレット
- 
+
 #環境変数取得
 ACCESS_TOKEN = os.environ["YOUR_CHANNEL_ACCESS_TOKEN"]
 SECRET = os.environ["YOUR_CHANNEL_SECRET"]
@@ -634,6 +634,10 @@ def handle_message(event):
         messages = carousel()
         
 
+        # reply_tokenが特定の値だった場合に処理終了
+    if event.reply_token == "00000000000000000000000000000000":
+        return
+
     line_bot_api.reply_message(
     event.reply_token,
     [moji, messages])
@@ -641,11 +645,14 @@ def handle_message(event):
     columns.clear()
 
 
+
 logging.debug("デバッグ")
 logging.info("情報")
 
 # if __name__ == "__main__":
 #     app.run(host="localhost", port=8000)   # ポート番号を8000に指定
+
+
 
 if __name__ == "__main__":
     arg_parser = ArgumentParser(
