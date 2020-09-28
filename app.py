@@ -372,7 +372,7 @@ def handle_message(event):
                         title="九州情報大学Q＆A",
                         actions=[
                             URIAction(
-                                uri="https://arcane-savannah-59524.herokuapp.com/index",
+                                uri="https://kiisfaq.herokuapp.com/index",
                                 label="push!"
                             )
                         ]
@@ -386,7 +386,7 @@ def handle_message(event):
                         title="setup",
                         actions=[
                             URIAction(
-                                uri="https://arcane-savannah-59524.herokuapp.com/setup",
+                                uri="https://kiisfaq.herokuapp.com/setup",
                                 label="push!"
                             )
                         ]
@@ -414,7 +414,7 @@ def handle_message(event):
                         title="Wi-Fiの設定",
                         actions=[
                             URIAction(
-                                uri="https://arcane-savannah-59524.herokuapp.com/nw_info",
+                                uri="https://kiisfaq.herokuapp.com/nw_info",
                                 label="push!"
                             )
                         ]
