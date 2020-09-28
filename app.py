@@ -16,6 +16,7 @@ from linebot.models import (
 # from memory_profiler import profile
 import os, MeCab,requests
 import logging
+import datetime
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -118,7 +119,13 @@ def handle_message(event):
                 kiis_count = kiis_count + 1
                 change_list.append("kiis_count")
 
-        if m in ['バス','ばす','bus','Bus']:
+        # if m in ['バス','ばす','bus','Bus']:
+        #     if bus_count > 0:
+        #         bus_count = bus_count + 1
+        #         change_list.remove("bus_count")
+        #         change_list.insert(0, "bus_count")
+
+        if m in ['時刻表','じこくひょう','schedule','時刻','スケジュール']:
             if bus_count > 0:
                 bus_count = bus_count + 1
                 change_list.remove("bus_count")
@@ -534,7 +541,90 @@ def handle_message(event):
         #     event.reply_token,
         #     TextSendMessage(text="どのような要件ですか？"))
         #     break
+    text = event.message.text
+    if m in ['バス','ばす','bus','Bus']:
+        line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(
+            text="バスの時刻表について次の選択肢から選んでください",
+            quick_reply=QuickReply(
+                items=[
+                QuickReplyButton(
+                    action=MessageAction(label="時刻表", text="時刻")
+                ),
+                QuickReplyButton(
+                    action=MessageAction(label="大学発の次のバス", text="大学")
+                ),
+                QuickReplyButton(
+                    action=MessageAction(label="太宰府駅発の次のバス", text="太宰府")
+                ),
+            ])))
 
+    # 時刻取得
+    date = datetime.datetime.now()
+    hour = date.hour
+    minute = date.minute
+    # 大学発のバスのリスト 
+    kiis_bh = [10,10,10,10,12,12,12,13,13,14,14,14,15,15,16,16,17,17,17,18]
+    kiis_bm = [9,19,32,56,12,25,42,12,42,12,26,42,12,46,8,42,20,45,59,13]
+    
+    if m in ['大学']:
+        for time in range(19):
+            if int(hour) == kiis_bh[time] and int(minute) <= kiis_bm[time]: #次の時間
+                bus_h = str(hour)
+                bus_m = str(kiis_bm[time])
+                line_bot_api.reply_message(
+                    event.reply_token,
+                    TextSendMessage(text="次の大学発のバスは"+bus_h+"時"+bus_m+"分です。")
+                )
+                break
+            elif int(hour) == kiis_bh[time] and int(minute) >= kiis_bm[time] and kiis_bh[time] < kiis_bh[time+1]: #次の時間のhourが変わる時
+                bus_h = str(kiis_bh[time+1])
+                bus_m = str(kiis_bm[time+1])    
+                line_bot_api.reply_message(
+                    event.reply_token,
+                    TextSendMessage(text="次の大学発のバスは"+bus_h+"時"+bus_m+"分です。") #現在の時間帯にバスがない時
+                )
+                break
+            elif int(hour) != kiis_bh[time] and int(hour) < kiis_bh[time] :
+                bus_h = str(kiis_bh[time])
+                bus_m = str(kiis_bm[time])    
+                line_bot_api.reply_message(
+                    event.reply_token,
+                    TextSendMessage(text="次の大学発のバスは"+bus_h+"時"+bus_m+"分です。")
+                )
+                break
+                
+    # 太宰府駅発のバスのリスト 
+    dz_bh = [8,8,8,8,9,9,9,9,10,10,10,10,11,12,12,12,13,13,14,14,14,15,15,16,16,17,17]
+    dz_bm = [13,25,37,50,2,17,29,46,0,16,26,39,3,19,32,49,19,49,19,34,49,19,53,15,49,27,52]
+    
+    if m in ['太宰府']:
+        for time in range(19):
+            if int(hour) == dz_bh[time] and int(minute) <= dz_bm[time]: #次の時間
+                bus_h = str(hour)
+                bus_m = str(dz_bm[time])
+                line_bot_api.reply_message(
+                    event.reply_token,
+                    TextSendMessage(text="次の太宰府駅発のバスは"+bus_h+"時"+bus_m+"分です。")
+                )
+                break
+            elif int(hour) == dz_bh[time] and int(minute) >= dz_bm[time] and dz_bh[time] < dz_bh[time+1]: #次の時間のhourが変わる時
+                bus_h = str(dz_bh[time+1])
+                bus_m = str(dz_bm[time+1])    
+                line_bot_api.reply_message(
+                    event.reply_token,
+                    TextSendMessage(text="次の太宰府駅発のバスは"+bus_h+"時"+bus_m+"分です。") #現在の時間帯にバスがない時
+                )
+                break
+            elif int(hour) != dz_bh[time] and int(hour) < dz_bh[time] :
+                bus_h = str(dz_bh[time])
+                bus_m = str(dz_bm[time])    
+                line_bot_api.reply_message(
+                    event.reply_token,
+                    TextSendMessage(text="次の太宰府駅発のバスは"+bus_h+"時"+bus_m+"分です。")
+                )
+                break
 
     if not columns:
         moji = TextSendMessage(text="一致する言葉がありませんでした。")
