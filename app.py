@@ -293,133 +293,147 @@ def handle_message(event):
                     wifi_count = wifi_count + 1
                     change_list.append("wifi_count")
 
-    if change_list==[]:
-        for c in change_list:
-            if c == "kiis_count":
-                result = CarouselColumn(
-                            thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/img_top_bnr02.jpg",
-                            text="九州情報大学のwebサイトです",
-                            title="九州情報大学",
-                            actions=[
-                                URIAction(
-                                    uri="https://www.kiis.ac.jp/",
-                                    label="push!"
-                                )
-                            ]
-                        )
-                columns.append(result)
 
-            if c == "bus_count":
-                result = CarouselColumn(
-                            thumbnail_image_url="https://www.kiis.ac.jp/wp-content/uploads/2018/03/img_information_bus_01_02.jpg",
-                            text="九州情報大学バスの時刻表です",
-                            title="バスの時刻表",
-                            actions=[
-                                URIAction(
-                                    uri="https://www.kiis.ac.jp/information/bus/",
-                                    label="push!"
-                                )
-                            ]
-                        )
-                columns.append(result)
+    for c in change_list:
+        if c == "kiis_count":
+            result = CarouselColumn(
+                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/img_top_bnr02.jpg",
+                        text="九州情報大学のwebサイトです",
+                        title="九州情報大学",
+                        actions=[
+                            URIAction(
+                                uri="https://www.kiis.ac.jp/",
+                                label="push!"
+                            )
+                        ]
+                    )
+            columns.append(result)
 
-            if c == "service_count":
-                result = CarouselColumn(
-                            thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
-                            text="パスワード変更はこちらから",
-                            title="情報処理室",
-                            actions=[
-                                URIAction(
-                                    uri="http://service.kiis.ac.jp/",
-                                    label="push!"
-                                )
-                            ]
-                        )
-                columns.append(result)
+        if c == "bus_count":
+            result = CarouselColumn(
+                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/uploads/2018/03/img_information_bus_01_02.jpg",
+                        text="九州情報大学バスの時刻表です",
+                        title="バスの時刻表",
+                        actions=[
+                            URIAction(
+                                uri="https://www.kiis.ac.jp/information/bus/",
+                                label="push!"
+                            )
+                        ]
+                    )
+            columns.append(result)
 
-            if c == "enkaku_count":
-                result = CarouselColumn(
-                            thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
-                            text="遠隔授業の一覧です",
-                            title="遠隔授業",
-                            actions=[
-                                URIAction(
-                                    uri="https://www.kiis.ac.jp/gakunai/enkaku",
-                                    label="push!"
-                                )
-                            ]
-                        )
-                columns.append(result)
+        if c == "service_count":
+            result = CarouselColumn(
+                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        text="パスワード変更はこちらから",
+                        title="情報処理室",
+                        actions=[
+                            URIAction(
+                                uri="http://service.kiis.ac.jp/",
+                                label="push!"
+                            )
+                        ]
+                    )
+            columns.append(result)
 
-            if c == "campusplan_count":
-                result = CarouselColumn(
-                            thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
-                            text="履修登録はこちらから",
-                            title="CampusPlan",
-                            actions=[
-                                URIAction(
-                                    uri="https://kiis-web.campusplan.jp/gakusei/web/CplanMenuWeb/UI/LoginForm.aspx",
-                                    label="push!"
-                                )
-                            ]
-                        )
-                columns.append(result)
+        if c == "enkaku_count":
+            result = CarouselColumn(
+                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        text="遠隔授業の一覧です",
+                        title="遠隔授業",
+                        actions=[
+                            URIAction(
+                                uri="https://www.kiis.ac.jp/gakunai/enkaku",
+                                label="push!"
+                            )
+                        ]
+                    )
+            columns.append(result)
 
-            if c == "qa_count":
-                result = CarouselColumn(
-                            thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
-                            text="九州情報大学のQ＆Aサイトです",
-                            title="九州情報大学Q＆A",
-                            actions=[
-                                URIAction(
-                                    uri="https://arcane-savannah-59524.herokuapp.com/index",
-                                    label="push!"
-                                )
-                            ]
-                        )
-                columns.append(result)
+        if c == "campusplan_count":
+            result = CarouselColumn(
+                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        text="履修登録はこちらから",
+                        title="CampusPlan",
+                        actions=[
+                            URIAction(
+                                uri="https://kiis-web.campusplan.jp/gakusei/web/CplanMenuWeb/UI/LoginForm.aspx",
+                                label="push!"
+                            )
+                        ]
+                    )
+            columns.append(result)
 
-            if c == "setup_count":
-                result = CarouselColumn(
-                            thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
-                            text="setupアカウント作成手順",
-                            title="setup",
-                            actions=[
-                                URIAction(
-                                    uri="https://arcane-savannah-59524.herokuapp.com/setup",
-                                    label="push!"
-                                )
-                            ]
-                        )
-                columns.append(result)
+        if c == "qa_count":
+            result = CarouselColumn(
+                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        text="九州情報大学のQ＆Aサイトです",
+                        title="九州情報大学Q＆A",
+                        actions=[
+                            URIAction(
+                                uri="https://arcane-savannah-59524.herokuapp.com/index",
+                                label="push!"
+                            )
+                        ]
+                    )
+            columns.append(result)
 
-            if c == "attendance_count":
-                result = CarouselColumn(
-                            thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
-                            text="九州情報大学出席くん(kiis.online)です",
-                            title="九州情報大学出席くん",
-                            actions=[
-                                URIAction(
-                                    uri="https://kiis.online",
-                                    label="push!"
-                                )
-                            ]
-                        )
-                columns.append(result)
+        if c == "setup_count":
+            result = CarouselColumn(
+                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        text="setupアカウント作成手順",
+                        title="setup",
+                        actions=[
+                            URIAction(
+                                uri="https://arcane-savannah-59524.herokuapp.com/setup",
+                                label="push!"
+                            )
+                        ]
+                    )
+            columns.append(result)
 
-            if c == "wifi_count":
-                result = CarouselColumn(
-                            thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
-                            text="Wi-fi(KIISWLAN)の設定",
-                            title="Wi-Fiの設定",
-                            actions=[
-                                URIAction(
-                                    uri="https://arcane-savannah-59524.herokuapp.com/nw_info",
-                                    label="push!"
-                                )
-                            ]
-                        )
-                columns.append(result)
+        if c == "attendance_count":
+            result = CarouselColumn(
+                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        text="九州情報大学出席くん(kiis.online)です",
+                        title="九州情報大学出席くん",
+                        actions=[
+                            URIAction(
+                                uri="https://kiis.online",
+                                label="push!"
+                            )
+                        ]
+                    )
+            columns.append(result)
+
+        if c == "wifi_count":
+            result = CarouselColumn(
+                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        text="Wi-fi(KIISWLAN)の設定",
+                        title="Wi-Fiの設定",
+                        actions=[
+                            URIAction(
+                                uri="https://arcane-savannah-59524.herokuapp.com/nw_info",
+                                label="push!"
+                            )
+                        ]
+                    )
+            columns.append(result)
+    if not columns:
+        moji = TextSendMessage(text="一致する言葉がありませんでした。")
+        messages = TextSendMessage(text="もう一度おねがいします。")
+    else:
+        moji = TextSendMessage(text=mojiretsu + ' を検知しました。')
+        messages = carousel()
+    
+
+    line_bot_api.reply_message(
+    event.reply_token,
+    [moji, messages])
+    
+    columns.clear()
+    change_list.clear()
 
         # if m in ['サイト','web','さいと','site','kiis','Web','KIIS','webサイト']:
         #     # messages_kiis = kiis_button()
@@ -704,19 +718,19 @@ def handle_message(event):
 #                 )
 #                 break
 
-    if not columns:
-        moji = TextSendMessage(text="一致する言葉がありませんでした。")
-        messages = TextSendMessage(text="もう一度おねがいします。")
-    else:
-        moji = TextSendMessage(text=mojiretsu + ' を検知しました。')
-        messages = carousel()
+    # if not columns:
+    #     moji = TextSendMessage(text="一致する言葉がありませんでした。")
+    #     messages = TextSendMessage(text="もう一度おねがいします。")
+    # else:
+    #     moji = TextSendMessage(text=mojiretsu + ' を検知しました。')
+    #     messages = carousel()
         
 
-    line_bot_api.reply_message(
-    event.reply_token,
-    [moji, messages])
+    # line_bot_api.reply_message(
+    # event.reply_token,
+    # [moji, messages])
     
-    columns.clear()
+    # columns.clear()
 
 
 
