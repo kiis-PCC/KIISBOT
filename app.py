@@ -122,7 +122,7 @@ def handle_message(event):
         mojiretsu = ','.join(meishi_list)
 
     for m in meishi_list:
-        elif m in ['バス','ばす','bus','Bus']:
+        if m in ['バス','ばす','bus','Bus']:
             items=[
                     QuickReplyButton(
                         action=MessageAction(label="時刻表", text="時刻")
