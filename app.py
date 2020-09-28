@@ -122,7 +122,7 @@ def handle_message(event):
         mojiretsu = ','.join(meishi_list)
 
     for m in meishi_list:
-        if m in ['バス','ばす','bus','Bus']:
+        elif m in ['バス','ばす','bus','Bus']:
             items=[
                     QuickReplyButton(
                         action=MessageAction(label="時刻表", text="時刻")
@@ -292,8 +292,8 @@ def handle_message(event):
                 else:
                     wifi_count = wifi_count + 1
                     change_list.append("wifi_count")
-                    
-    if not change_list:
+
+    if change_list==[]:
         for c in change_list:
             if c == "kiis_count":
                 result = CarouselColumn(
