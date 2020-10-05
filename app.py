@@ -52,6 +52,10 @@ def carousel():
     )
     return carousel_template_message
 
+@app.route("/")
+def hello_world():
+    return "hello world!"
+
 @app.route("/callback", methods=['POST'])
 def callback():
     # get X-Line-Signature header value
