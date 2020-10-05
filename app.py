@@ -195,6 +195,7 @@ def handle_message(event):
                         TextSendMessage(text="次の太宰府駅発のバスは"+bus_h+"時"+bus_m+"分です。")
                     )
                     break
+        
 
         else:
             if m in ['サイト','web','さいと','site','kiis','Web','KIIS','webサイト']:
@@ -263,7 +264,7 @@ def handle_message(event):
                     setup_count = setup_count + 1
                     change_list.append("setup_count")
 
-            if m in ['qa', 'q&a', 'Q&A', 'まとめ', '質問']:
+            if m in ['qa', 'q&a', 'Q&A', 'まとめ', '質問','その他']:
                 if qa_count > 0:
                     qa_count = qa_count + 1
                     change_list.remove("qa_count")
@@ -372,7 +373,7 @@ def handle_message(event):
                         title="九州情報大学Q＆A",
                         actions=[
                             URIAction(
-                                uri="https://kiisfaq.herokuapp.com/index",
+                                uri="https://kiisqa.herokuapp.com/index",
                                 label="push!"
                             )
                         ]
@@ -386,7 +387,7 @@ def handle_message(event):
                         title="setup",
                         actions=[
                             URIAction(
-                                uri="https://kiisfaq.herokuapp.com/setup",
+                                uri="https://kiisqa.herokuapp.com/setup",
                                 label="push!"
                             )
                         ]
@@ -414,7 +415,7 @@ def handle_message(event):
                         title="Wi-Fiの設定",
                         actions=[
                             URIAction(
-                                uri="https://kiisfaq.herokuapp.com/nw_info",
+                                uri="https://kiisqa.herokuapp.com/nw_info",
                                 label="push!"
                             )
                         ]
