@@ -1,7 +1,7 @@
 # import config   # 先ほど作成したconfig.pyをインポート
 from flask import Flask, request, abort
 from argparse import ArgumentParser
- 
+
 from linebot import (
     LineBotApi, WebhookHandler
 )
@@ -60,21 +60,20 @@ def hello_world():
 def callback():
     # get X-Line-Signature header value
     signature = request.headers['X-Line-Signature']
- 
     # get request body as text
     body = request.get_data(as_text=True)
     app.logger.info("Request body: " + body)
- 
+
     # handle webhook body
     try:
         handler.handle(body, signature)
     except InvalidSignatureError:
         print("Invalid signature. Please check your channel access token/channel secret.")
         abort(400)
- 
+
     return 'OK'
 
- 
+
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -199,6 +198,67 @@ def handle_message(event):
                         TextSendMessage(text="次の太宰府駅発のバスは"+bus_h+"時"+bus_m+"分です。")
                     )
                     break
+        elif m in ['授業','時間']:
+            items=[
+                    QuickReplyButton(
+                        action=MessageAction(label="1", text="1")
+                    ),
+                    QuickReplyButton(
+                        action=MessageAction(label="2", text="2")
+                    ),
+                    QuickReplyButton(
+                        action=MessageAction(label="3", text="3")
+                    ),
+                    QuickReplyButton(
+                        action=MessageAction(label="4", text="4")
+                    ),
+                    QuickReplyButton(
+                        action=MessageAction(label="5", text="5")
+                    ),
+                ]
+            messages = TextSendMessage(text="知りたい授業の時間を選択してください",
+                        quick_reply=QuickReply(items=items)) 
+
+            
+            line_bot_api.reply_message(
+            event.reply_token,
+            messages = messages)
+
+        elif m in ['1']:
+            line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="1限の時間は8:50~10:20です。"))
+            break
+
+        elif m in ['2']:
+            line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="2限の時間は10:30~12:00です。"))
+            break
+
+        elif m in ['3']:
+            line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="3限の時間は12:50~14:20です。"))
+            break
+
+        elif m in ['4']:
+            line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="4限の時間は14:30~16:00です。"))
+            break
+
+        elif m in ['5']:
+            line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="5限の時間は16:10~17:40です。"))
+            break
+
+        elif m in ['昼休み']:
+            line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="昼休みの時間は12:00~12:50です。"))
+            break
         
 
         else:
