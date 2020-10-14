@@ -228,37 +228,37 @@ def handle_message(event):
             line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="1限の時間は8:50~10:20です。"))
-            break
+            
 
         elif m in ['2']:
             line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="2限の時間は10:30~12:00です。"))
-            break
+            
 
         elif m in ['3']:
             line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="3限の時間は12:50~14:20です。"))
-            break
+            
 
         elif m in ['4']:
             line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="4限の時間は14:30~16:00です。"))
-            break
+            
 
         elif m in ['5']:
             line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="5限の時間は16:10~17:40です。"))
-            break
+            
 
         elif m in ['昼休み']:
             line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="昼休みの時間は12:00~12:50です。"))
-            break
+            
         
 
         else:
@@ -437,7 +437,7 @@ def handle_message(event):
                         title="九州情報大学Q＆A",
                         actions=[
                             URIAction(
-                                uri="https://kiisqa.herokuapp.com/index",
+                                uri="https://kirari.pythonanywhere.com/index",
                                 label="push!"
                             )
                         ]
@@ -451,7 +451,7 @@ def handle_message(event):
                         title="setup",
                         actions=[
                             URIAction(
-                                uri="https://kiisqa.herokuapp.com/setup",
+                                uri="https://kirari.pythonanywhere.com/setup",
                                 label="push!"
                             )
                         ]
@@ -479,7 +479,7 @@ def handle_message(event):
                         title="Wi-Fiの設定",
                         actions=[
                             URIAction(
-                                uri="https://kiisqa.herokuapp.com/nw_info",
+                                uri="https://kirari.pythonanywhere.com/nw_info",
                                 label="push!"
                             )
                         ]
