@@ -460,15 +460,15 @@ def handle_message(event):
                     nwdrive_count = nwdrive_count + 1
                     change_list.append("nwdrive_count")
 
-            if m in ['インストール', 'install', 'Install', 'ウイルスバスター', 'ソフトウェア', 'ソフト']:
-                moji = TextSendMessage(text=mojiretsu + ' を検知しました。')
+            # if m in ['インストール', 'install', 'Install', 'ウイルスバスター', 'ソフトウェア', 'ソフト']:
+            #     moji = TextSendMessage(text=mojiretsu + ' を検知しました。')
                 
-                line_bot_api.reply_message(
-                event.reply_token,
-                [moji])
+            #     line_bot_api.reply_message(
+            #     event.reply_token,
+            #     [moji])
                 
-                columns.clear()
-                change_list.clear()
+            #     columns.clear()
+            #     change_list.clear()
                     # if m in ['その他']:
         #     line_bot_api.reply_message(
         #     event.reply_token,
@@ -658,7 +658,7 @@ def handle_message(event):
                     )
             columns.append(result)
 
-        if c == "office_id":
+        if c == "office_id_count":
             result = CarouselColumn(
                         thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
                         text="officeでパスワードを聞かれるときの対応",
@@ -672,7 +672,7 @@ def handle_message(event):
                     )
             columns.append(result)
 
-        if c == "outlook":
+        if c == "outlook_count":
             result = CarouselColumn(
                         thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
                         text="outlookの設定",
@@ -686,7 +686,7 @@ def handle_message(event):
                     )
             columns.append(result)
 
-        if c == "webmail":
+        if c == "webmail_count":
             result = CarouselColumn(
                         thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
                         text="webmailについて",
@@ -700,7 +700,7 @@ def handle_message(event):
                     )
             columns.append(result)
 
-        if c == "nwdrive":
+        if c == "nwdrive_count":
             result = CarouselColumn(
                         thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
                         text="個人用ドライブの割り当てについて",
