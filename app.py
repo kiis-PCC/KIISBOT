@@ -103,16 +103,27 @@ def handle_message(event):
     # site = kiis_button()
 
     # 各変数のカウンター
-    kiis_count = 0
-    bus_count = 0
-    questionnaire_count = 0
-    service_count = 0
-    enkaku_count = 0
-    campusplan_count = 0
-    qa_count = 0
-    setup_count = 0
-    attendance_count = 0
-    wifi_count = 0
+    kiis_count = 0   #九州情報大学HP
+    bus_count = 0    #バス
+    service_count = 0  #情報処理室
+    enkaku_count = 0  #遠隔授業
+    campusplan_count = 0  #履修登録
+    attendance_count = 0  #出席くん
+    #自作サイトURL
+    qa_count = 0  #FAQサイト
+    setup_count = 0 #setup
+    wifi_count = 0 #wifi
+    gsuite_count = 0  #gsuite
+    nw_count = 0  #KIISNW
+
+    share_count = 0 #shareフォルダ
+    nw_password_count = 0 #nwパスワード
+    nw_miss_count = 0 #nwパスワードトラブル
+    office_id_count = 0 #office資格情報
+    outlook_count = 0 #outlook
+    webmail_count = 0 #webmail
+    nwdrive_count = 0 #個人ドライブの割当
+
 
     # 順番を並び替えするためのリスト 
     change_list = []
@@ -347,6 +358,16 @@ def handle_message(event):
                 else:
                     attendance_count = attendance_count + 1
                     change_list.append("attendance_count")
+
+            if m in ['gmail', 'gsuite', 'Gmail', 'Gsuite', 'mail', 'メール','web', 'Web', 'webmail', 'Webmail', 'WebMail', 'ウェブ', 'メール', '設定']:
+                if gsuite_count > 0:
+                    gsuite_count = gsuite_count + 1
+                    change_list.remove("gsuite_count")
+                    change_list.insert(0, "gsuite_count")
+
+                else:
+                    gsuite_count = gsuite_count + 1
+                    change_list.append("gsuite_count")
                 
             if m in ["wifi","Wifi","Wi","wi","network","Network","ネットワーク","接続","設定","ワイファイ"]:
                 if wifi_count > 0:
@@ -358,7 +379,102 @@ def handle_message(event):
                     wifi_count = wifi_count + 1
                     change_list.append("wifi_count")
 
+            if m in ["network","Network","ネットワーク","接続","設定","ワイファイ"]:
+                if nw_count > 0:
+                    nw_count = nw_count + 1
+                    change_list.remove("nw_count")
+                    change_list.insert(0, "nw_count")
 
+                else:
+                    nw_count = nw_count + 1
+                    change_list.append("nw_count")
+
+            if m in ['share', 'シェア', 'フォルダ', 'folder', '共有']:
+                if share_count > 0:
+                    share_count = share_count + 1
+                    change_list.remove("share_count")
+                    change_list.insert(0, "share_count")
+
+                else:
+                    share_count = share_count + 1
+                    change_list.append("share_count")
+
+            if m in ['nw', 'ネットワーク', 'パスワード', 'password', 'network']:
+                if nw_password_count > 0:
+                    nw_password_count = nw_password_count + 1
+                    change_list.remove("nw_password_count")
+                    change_list.insert(0, "nw_password_count")
+
+                else:
+                    nw_password_count = nw_password_count + 1
+                    change_list.append("nw_password_count")
+
+            if m in ['nw', 'ネットワーク', 'パスワード', 'password', 'network', '変更', '後', '使用']:
+                if nw_miss_count > 0:
+                    nw_miss_count = nw_miss_count + 1
+                    change_list.remove("nw_miss_count")
+                    change_list.insert(0, "nw_miss_count")
+
+                else:
+                    nw_miss_count = nw_miss_count + 1
+                    change_list.append("nw_miss_count")
+
+
+            if m in ['office', 'Office', 'word', 'Word', 'excel', 'Excel', 'powerpoint', 'Powerpoint', '資格', '情報', 'ID', 'パスワード', '入力']:
+                if office_id_count > 0:
+                    office_id_count = office_id_count + 1
+                    change_list.remove("office_id_count")
+                    change_list.insert(0, "office_id_count")
+
+                else:
+                    office_id_count = office_id_count + 1
+                    change_list.append("office_id_count")
+
+            if m in ['outlook', 'Outlook', 'メール', 'mail', 'Mail']:
+                            if outlook_count > 0:
+                                outlook_count = outlook_count + 1
+                                change_list.remove("outlook_count")
+                                change_list.insert(0, "outlook_count")
+
+                            else:
+                                outlook_count = outlook_count + 1
+                                change_list.append("outlook_count")
+
+            if m in ['web', 'Web', 'webmail', 'Webmail', 'WebMail', 'ウェブ', 'メール', '設定']:
+                if webmail_count > 0:
+                    webmail_count = webmail_count + 1
+                    change_list.remove("webmail_count")
+                    change_list.insert(0, "webmail_count")
+
+                else:
+                    webmail_count = webmail_count + 1
+                    change_list.append("webmail_count")
+
+            if m in ['ドライブ', 'わりあて', '割り当て', '個人', '設定']:
+                if nwdrive_count > 0:
+                    nwdrive_count = nwdrive_count + 1
+                    change_list.remove("nwdrive_count")
+                    change_list.insert(0, "nwdrive_count")
+
+                else:
+                    nwdrive_count = nwdrive_count + 1
+                    change_list.append("nwdrive_count")
+
+            if m in ['インストール', 'install', 'Install', 'ウイルスバスター', 'ソフトウェア', 'ソフト']:
+                moji = TextSendMessage(text=mojiretsu + ' を検知しました。')
+                
+                line_bot_api.reply_message(
+                event.reply_token,
+                [moji])
+                
+                columns.clear()
+                change_list.clear()
+                    # if m in ['その他']:
+        #     line_bot_api.reply_message(
+        #     event.reply_token,
+        #     TextSendMessage(text="どのような要件ですか？"))
+
+#カルーセル表示の順番を重みで入れ替える
     for c in change_list:
         if c == "kiis_count":
             result = CarouselColumn(
@@ -434,7 +550,7 @@ def handle_message(event):
             result = CarouselColumn(
                         thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
                         text="九州情報大学のQ＆Aサイトです",
-                        title="九州情報大学Q＆A",
+                        title="九州情報大学FAQ",
                         actions=[
                             URIAction(
                                 uri="https://kirari.pythonanywhere.com/index",
@@ -472,11 +588,136 @@ def handle_message(event):
                     )
             columns.append(result)
 
+        if c == "gsuite_count":
+            result = CarouselColumn(
+                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        text="Gsuiteの設定",
+                        title="Gsuiteの設定",
+                        actions=[
+                            URIAction(
+                                uri="https://kirari.pythonanywhere.com/gsuite",
+                                label="push!"
+                            )
+                        ]
+                    )
+            columns.append(result)
+
+        if c == "nw_count":
+            result = CarouselColumn(
+                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        text="KIISNWの設定",
+                        title="KIISNWの設定",
+                        actions=[
+                            URIAction(
+                                uri="https://kirari.pythonanywhere.com/kiisnw",
+                                label="push!"
+                            )
+                        ]
+                    )
+            columns.append(result)
+
+        if c == "share_count":
+            result = CarouselColumn(
+                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        text="共有フォルダ(share)の設定",
+                        title="共有フォルダ(share)の設定",
+                        actions=[
+                            URIAction(
+                                uri="https://kirari.pythonanywhere.com/share",
+                                label="push!"
+                            )
+                        ]
+                    )
+            columns.append(result)
+
+        if c == "nw_password_count":
+            result = CarouselColumn(
+                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        text="ネットワークのパスワードについて",
+                        title="ネットワークのパスワードについて",
+                        actions=[
+                            URIAction(
+                                uri="https://kirari.pythonanywhere.com/nw_password",
+                                label="push!"
+                            )
+                        ]
+                    )
+            columns.append(result)
+
+        if c == "nw_miss_count":
+            result = CarouselColumn(
+                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        text="ネットワークのパスワードのトラブル",
+                        title="ネットワークのパスワードのトラブル",
+                        actions=[
+                            URIAction(
+                                uri="https://kirari.pythonanywhere.com/nw_miss",
+                                label="push!"
+                            )
+                        ]
+                    )
+            columns.append(result)
+
+        if c == "office_id":
+            result = CarouselColumn(
+                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        text="officeでパスワードを聞かれるときの対応",
+                        title="officeでパスワードを聞かれるときの対応",
+                        actions=[
+                            URIAction(
+                                uri="https://kirari.pythonanywhere.com/office_id",
+                                label="push!"
+                            )
+                        ]
+                    )
+            columns.append(result)
+
+        if c == "outlook":
+            result = CarouselColumn(
+                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        text="outlookの設定",
+                        title="outlookの設定",
+                        actions=[
+                            URIAction(
+                                uri="https://kirari.pythonanywhere.com/outlook",
+                                label="push!"
+                            )
+                        ]
+                    )
+            columns.append(result)
+
+        if c == "webmail":
+            result = CarouselColumn(
+                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        text="webmailについて",
+                        title="webmailについて",
+                        actions=[
+                            URIAction(
+                                uri="https://kirari.pythonanywhere.com/webmail",
+                                label="push!"
+                            )
+                        ]
+                    )
+            columns.append(result)
+
+        if c == "nwdrive":
+            result = CarouselColumn(
+                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        text="個人用ドライブの割り当てについて",
+                        title="個人用ドライブの割り当てについて",
+                        actions=[
+                            URIAction(
+                                uri="https://kirari.pythonanywhere.com/nwdrive",
+                                label="push!"
+                            )
+                        ]
+                    )
+            columns.append(result)
         if c == "wifi_count":
             result = CarouselColumn(
                         thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
                         text="Wi-fi(KIISWLAN)の設定",
-                        title="Wi-Fiの設定",
+                        title="Wi-Fi(KIISWLAN)の設定",
                         actions=[
                             URIAction(
                                 uri="https://kirari.pythonanywhere.com/nw_info",
@@ -492,7 +733,7 @@ def handle_message(event):
         moji = TextSendMessage(text=mojiretsu + ' を検知しました。')
         messages = carousel()
     
-
+#メッセージ送信
     line_bot_api.reply_message(
     event.reply_token,
     [moji, messages])
