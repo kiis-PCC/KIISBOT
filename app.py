@@ -128,6 +128,12 @@ def handle_message(event):
     # 順番を並び替えするためのリスト 
     change_list = []
 
+        # 例外処理
+    exception_list = []
+
+    #レビュー
+    review = []
+
     while node:
         if  "名詞," in node.feature:
             meishi_list.append(node.surface)
@@ -459,6 +465,12 @@ def handle_message(event):
                 else:
                     nwdrive_count = nwdrive_count + 1
                     change_list.append("nwdrive_count")
+            
+            if m in ['インストール', 'install', 'Install', 'ウイルスバスター', 'ソフトウェア', 'ソフト']:
+                exception_list.append(m)
+            
+            if m in ['レビュー']:
+                review.append(m)
 
             # if m in ['インストール', 'install', 'Install', 'ウイルスバスター', 'ソフトウェア', 'ソフト']:
             #     moji = TextSendMessage(text=mojiretsu + ' を検知しました。')
@@ -726,20 +738,36 @@ def handle_message(event):
                         ]
                     )
             columns.append(result)
-    if not columns:
-        moji = TextSendMessage(text="一致する言葉がありませんでした。")
-        messages = TextSendMessage(text="もう一度おねがいします。")
+    if review:
+        moji = TextSendMessage(text="ありがとうございます。今後の研究の参考にさせていただきます。")
+        #メッセージ送信
+        line_bot_api.reply_message(
+        event.reply_token,
+        [moji])
+        
+        columns.clear()
+        change_list.clear()
+        exception_list.clear()    
+    elif exception_list:
+
+        columns.clear()
+        change_list.clear()
+        exception_list.clear()
     else:
-        moji = TextSendMessage(text=mojiretsu + ' を検知しました。')
-        messages = carousel()
-    
-#メッセージ送信
-    line_bot_api.reply_message(
-    event.reply_token,
-    [moji, messages])
-    
-    columns.clear()
-    change_list.clear()
+        if not columns:
+            moji = TextSendMessage(text="一致する言葉がありませんでした。")
+            messages = TextSendMessage(text="もう一度おねがいします。")
+        else:
+            moji = TextSendMessage(text=mojiretsu + ' を検知しました。')
+            messages = carousel()
+        
+    #メッセージ送信
+        line_bot_api.reply_message(
+        event.reply_token,
+        [moji, messages])
+        
+        columns.clear()
+        change_list.clear()
 
         # if m in ['サイト','web','さいと','site','kiis','Web','KIIS','webサイト']:
         #     # messages_kiis = kiis_button()
