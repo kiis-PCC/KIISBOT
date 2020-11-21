@@ -613,7 +613,7 @@ def handle_message(event):
                     nwdrive_count = nwdrive_count + 1
                     change_list.append("nwdrive_count")
             
-            if m in ['インストール', 'install', 'Install', 'ウイルスバスター', 'ソフトウェア', 'ソフト', '一覧']:
+            if m in ['インストール', 'install', 'Install', 'ウイルスバスター', 'ソフトウェア', 'ソフト', '一覧', ’なし]:
                 exception_list.append(m)
             
             if m in ['レビュー']:
@@ -718,7 +718,7 @@ def handle_message(event):
                         title="九州情報大学FAQ",
                         actions=[
                             URIAction(
-                                uri="https://kirari.pythonanywhere.com/index",
+                                uri="https://kiisfaq.pythonanywhere.com/index",
                                 label="push!"
                             )
                         ]
@@ -732,7 +732,7 @@ def handle_message(event):
                         title="setup",
                         actions=[
                             URIAction(
-                                uri="https://kirari.pythonanywhere.com/setup",
+                                uri="https://kiisfaq.pythonanywhere.com/setup",
                                 label="push!"
                             )
                         ]
@@ -760,7 +760,7 @@ def handle_message(event):
                         title="Gsuiteの設定",
                         actions=[
                             URIAction(
-                                uri="https://kirari.pythonanywhere.com/gsuite",
+                                uri="https://kiisfaq.pythonanywhere.com/gsuite",
                                 label="push!"
                             )
                         ]
@@ -774,7 +774,7 @@ def handle_message(event):
                         title="KIISNWの設定",
                         actions=[
                             URIAction(
-                                uri="https://kirari.pythonanywhere.com/kiisnw",
+                                uri="https://kiisfaq.pythonanywhere.com/kiisnw",
                                 label="push!"
                             )
                         ]
@@ -788,7 +788,7 @@ def handle_message(event):
                         title="共有フォルダ(share)の設定",
                         actions=[
                             URIAction(
-                                uri="https://kirari.pythonanywhere.com/share",
+                                uri="https://kiisfaq.pythonanywhere.com/share",
                                 label="push!"
                             )
                         ]
@@ -802,7 +802,7 @@ def handle_message(event):
                         title="ネットワークのパスワードについて",
                         actions=[
                             URIAction(
-                                uri="https://kirari.pythonanywhere.com/nw_password",
+                                uri="https://kiisfaq.pythonanywhere.com/nw_password",
                                 label="push!"
                             )
                         ]
@@ -816,7 +816,7 @@ def handle_message(event):
                         title="ネットワークのパスワードのトラブル",
                         actions=[
                             URIAction(
-                                uri="https://kirari.pythonanywhere.com/nw_miss",
+                                uri="https://kiisfaq.pythonanywhere.com/nw_miss",
                                 label="push!"
                             )
                         ]
@@ -830,7 +830,7 @@ def handle_message(event):
                         title="officeでパスワードを聞かれるときの対応",
                         actions=[
                             URIAction(
-                                uri="https://kirari.pythonanywhere.com/office_id",
+                                uri="https://kiisfaq.pythonanywhere.com/office_id",
                                 label="push!"
                             )
                         ]
@@ -844,7 +844,7 @@ def handle_message(event):
                         title="outlookの設定",
                         actions=[
                             URIAction(
-                                uri="https://kirari.pythonanywhere.com/outlook",
+                                uri="https://kiisfaq.pythonanywhere.com/outlook",
                                 label="push!"
                             )
                         ]
@@ -858,7 +858,7 @@ def handle_message(event):
                         title="webmailについて",
                         actions=[
                             URIAction(
-                                uri="https://kirari.pythonanywhere.com/webmail",
+                                uri="https://kiisfaq.pythonanywhere.com/webmail",
                                 label="push!"
                             )
                         ]
@@ -872,7 +872,7 @@ def handle_message(event):
                         title="個人用ドライブの割り当てについて",
                         actions=[
                             URIAction(
-                                uri="https://kirari.pythonanywhere.com/nwdrive",
+                                uri="https://kiisfaq.pythonanywhere.com/nwdrive",
                                 label="push!"
                             )
                         ]
@@ -885,7 +885,7 @@ def handle_message(event):
                         title="Wi-Fi(KIISWLAN)の設定",
                         actions=[
                             URIAction(
-                                uri="https://kirari.pythonanywhere.com/nw_info",
+                                uri="https://kiisfaq.pythonanywhere.com/nw_info",
                                 label="push!"
                             )
                         ]
