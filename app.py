@@ -613,7 +613,7 @@ def handle_message(event):
                     nwdrive_count = nwdrive_count + 1
                     change_list.append("nwdrive_count")
             
-            if m in ['インストール', 'install', 'Install', 'ウイルスバスター', 'ソフトウェア', 'ソフト', '一覧', ’なし]:
+            if m in ['インストール', 'install', 'Install', 'ウイルスバスター', 'ソフトウェア', 'ソフト', '一覧', 'なし']:
                 exception_list.append(m)
             
             if m in ['レビュー']:
