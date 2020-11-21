@@ -269,7 +269,7 @@ def handle_message(event):
     nwdrive_count = 0 #個人ドライブの割当
 
     # flex_message
-    other_count = 0　#その他
+    other_count = 0 #その他
     question_count = 0 #質問
 
     # 順番を並び替えするためのリスト 
