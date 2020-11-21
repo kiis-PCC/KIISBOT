@@ -1,4 +1,3 @@
-# import config   # 先ほど作成したconfig.pyをインポート
 from flask import Flask, request, abort
 from argparse import ArgumentParser
 
@@ -11,13 +10,14 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage, 
     TemplateSendMessage,ButtonsTemplate,URIAction,ImageSendMessage,
-    CarouselTemplate,CarouselColumn, MessageAction, PostbackAction, QuickReply, QuickReplyButton
+    CarouselTemplate,CarouselColumn, MessageAction, PostbackAction, QuickReply, QuickReplyButton, FlexSendMessage
 )
 # from memory_profiler import profile
 import os, MeCab,requests
 import logging
 import datetime
 import pytz
+import json
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -41,8 +41,9 @@ SECRET = os.environ["YOUR_CHANNEL_SECRET"]
 line_bot_api = LineBotApi(ACCESS_TOKEN)
 handler = WebhookHandler(SECRET)
 
-columns = []
+columns = []  #カルーセルの内容を入れるリスト
 
+# カルーセル
 def carousel():
     carousel_template_message = TemplateSendMessage(
         alt_text='Carousel template',
@@ -52,10 +53,154 @@ def carousel():
     )
     return carousel_template_message
 
+def other():
+    flex_message_json_string = """
+            {
+                "type": "bubble",
+                "body": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                    {
+                        "type": "text",
+                        "text": "その他",
+                        "weight": "bold",
+                        "size": "xl"
+                    },
+                    {
+                        "type": "text",
+                        "text": "下記の中から選んでください"
+                    }
+                    ]
+                },
+                "footer": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                    {
+                        "type": "button",
+                        "action": {
+                        "type": "message",
+                        "label": "質問",
+                        "text": "質問"
+                        }
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                        "type": "message",
+                        "label": "遠隔授業",
+                        "text": "遠隔"
+                        }
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                        "type": "uri",
+                        "label": "KIIS FAQ",
+                        "uri": "https://kiisfaq.pythonanywhere.com/index"
+                        }
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                        "type": "uri",
+                        "label": "西鉄太宰府線",
+                        "uri": "http://jik.nishitetsu.jp/trainroute?f=traintimetable&list=0002,0500&_ga=2.209808725.1929044545.1605859087-517787699.1605859087"
+                        }
+                    }
+                    ]
+                }
+            }
+        """
+    
+    flex_message_json_dict = json.loads(flex_message_json_string)
+
+    flex_message = FlexSendMessage(
+                alt_text='alt_text',
+                # contentsパラメタに, dict型の値を渡す
+                contents=flex_message_json_dict
+            )
+    return flex_message
+
+def question():
+    flex_message_json_string = """
+                            {
+                "type": "bubble",
+                "body": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                    {
+                        "type": "text",
+                        "weight": "bold",
+                        "size": "sm",
+                        "text": "質問したい内容はこちらにありますか？"
+                    }
+                    ]
+                },
+                "footer": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "spacing": "sm",
+                    "contents": [
+                    {
+                        "type": "button",
+                        "style": "link",
+                        "height": "sm",
+                        "action": {
+                        "type": "message",
+                        "text": "wifi",
+                        "label": "Wi-Fi(KIISWLAN)"
+                        }
+                    },
+                    {
+                        "type": "button",
+                        "style": "link",
+                        "height": "sm",
+                        "action": {
+                        "type": "message",
+                        "label": "Setup",
+                        "text": "setup"
+                        }
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                        "type": "message",
+                        "text": "共有",
+                        "label": "共有フォルダ(share)"
+                        }
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                        "type": "message",
+                        "label": "該当なし",
+                        "text": "なし"
+                        }
+                    }
+                    ],
+                    "flex": 0
+                }
+                }
+            """
+    
+    flex_message_json_dict = json.loads(flex_message_json_string)
+
+    flex_message = FlexSendMessage(
+                alt_text='alt_text',
+                # contentsパラメタに, dict型の値を渡す
+                contents=flex_message_json_dict
+            )
+    return flex_message
+
+# UptimeRobotでアクセスさせるためのページ
 @app.route("/")
 def hello_world():
     return "hello world!"
 
+# メッセージが送信された時
 @app.route("/callback", methods=['POST'])
 def callback():
     # get X-Line-Signature header value
@@ -115,7 +260,6 @@ def handle_message(event):
     wifi_count = 0 #wifi
     gsuite_count = 0  #gsuite
     nw_count = 0  #KIISNW
-
     share_count = 0 #shareフォルダ
     nw_password_count = 0 #nwパスワード
     nw_miss_count = 0 #nwパスワードトラブル
@@ -124,6 +268,9 @@ def handle_message(event):
     webmail_count = 0 #webmail
     nwdrive_count = 0 #個人ドライブの割当
 
+    # flex_message
+    other_count = 0　#その他
+    question_count = 0 #質問
 
     # 順番を並び替えするためのリスト 
     change_list = []
@@ -345,7 +492,7 @@ def handle_message(event):
                     setup_count = setup_count + 1
                     change_list.append("setup_count")
 
-            if m in ['qa', 'q&a', 'Q&A', 'まとめ', '質問','その他']:
+            if m in ['qa', 'q&a', 'Q&A', 'まとめ']:
                 if qa_count > 0:
                     qa_count = qa_count + 1
                     change_list.remove("qa_count")
@@ -466,11 +613,17 @@ def handle_message(event):
                     nwdrive_count = nwdrive_count + 1
                     change_list.append("nwdrive_count")
             
-            if m in ['インストール', 'install', 'Install', 'ウイルスバスター', 'ソフトウェア', 'ソフト']:
+            if m in ['インストール', 'install', 'Install', 'ウイルスバスター', 'ソフトウェア', 'ソフト', '一覧']:
                 exception_list.append(m)
             
             if m in ['レビュー']:
                 review.append(m)
+            
+            if m in ['その他']:
+                other_count = other_count + 1
+            
+            if m in ['質問']:
+                question_count = question_count + 1  
 
             # if m in ['インストール', 'install', 'Install', 'ウイルスバスター', 'ソフトウェア', 'ソフト']:
             #     moji = TextSendMessage(text=mojiretsu + ' を検知しました。')
@@ -738,6 +891,8 @@ def handle_message(event):
                         ]
                     )
             columns.append(result)
+        
+            
     if review:
         moji = TextSendMessage(text="ありがとうございます。今後の研究の参考にさせていただきます。")
         #メッセージ送信
@@ -747,12 +902,28 @@ def handle_message(event):
         
         columns.clear()
         change_list.clear()
-        exception_list.clear()    
-    elif exception_list:
+        review.clear()    
 
+    elif exception_list:
         columns.clear()
         change_list.clear()
         exception_list.clear()
+
+    elif other_count > 0:
+        messages = other()
+        line_bot_api.reply_message(
+            event.reply_token,
+            messages
+        )
+        other_count = 0
+
+    elif question_count > 0:
+        messages = question()
+        line_bot_api.reply_message(
+            event.reply_token,
+            messages
+        )
+        question_count = 0
     else:
         if not columns:
             moji = TextSendMessage(text="一致する言葉がありませんでした。")
