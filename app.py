@@ -177,7 +177,7 @@ def question():
                         "action": {
                         "type": "message",
                         "label": "該当なし",
-                        "text": "なし"
+                        "text": "該当なし"
                         }
                     }
                     ],
@@ -613,7 +613,7 @@ def handle_message(event):
                     nwdrive_count = nwdrive_count + 1
                     change_list.append("nwdrive_count")
             
-            if m in ['インストール', 'install', 'Install', 'ウイルスバスター', 'ソフトウェア', 'ソフト', '一覧', 'なし']:
+            if m in ['インストール', 'install', 'Install', 'ウイルスバスター', 'ソフトウェア', 'ソフト', '一覧', '該当']:
                 exception_list.append(m)
             
             if m in ['レビュー']:
