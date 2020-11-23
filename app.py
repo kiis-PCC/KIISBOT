@@ -671,7 +671,7 @@ def handle_message(event):
 
         if c == "service_count":
             result = CarouselColumn(
-                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        thumbnail_image_url="https://kiisfaq.pythonanywhere.com/static/images/line_school.png",
                         text="パスワード変更はこちらから",
                         title="情報処理室",
                         actions=[
@@ -685,7 +685,7 @@ def handle_message(event):
 
         if c == "enkaku_count":
             result = CarouselColumn(
-                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        thumbnail_image_url="https://kiisfaq.pythonanywhere.com/static/images/line_school.png",
                         text="遠隔授業の一覧です",
                         title="遠隔授業",
                         actions=[
@@ -699,7 +699,7 @@ def handle_message(event):
 
         if c == "campusplan_count":
             result = CarouselColumn(
-                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        thumbnail_image_url="https://kiisfaq.pythonanywhere.com/static/images/line_school.png",
                         text="履修登録はこちらから",
                         title="CampusPlan",
                         actions=[
@@ -713,7 +713,7 @@ def handle_message(event):
 
         if c == "qa_count":
             result = CarouselColumn(
-                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        thumbnail_image_url="https://kiisfaq.pythonanywhere.com/static/images/line_kiisfaq.png",
                         text="九州情報大学のQ＆Aサイトです",
                         title="九州情報大学FAQ",
                         actions=[
@@ -727,7 +727,7 @@ def handle_message(event):
 
         if c == "setup_count":
             result = CarouselColumn(
-                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        thumbnail_image_url="https://kiisfaq.pythonanywhere.com/static/images/line_kiisfaq.png",
                         text="setupアカウント作成手順",
                         title="setup",
                         actions=[
@@ -741,7 +741,7 @@ def handle_message(event):
 
         if c == "attendance_count":
             result = CarouselColumn(
-                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        thumbnail_image_url="https://kiisfaq.pythonanywhere.com/static/images/line_school.png",
                         text="九州情報大学出席くん(kiis.online)です",
                         title="九州情報大学出席くん",
                         actions=[
@@ -755,7 +755,7 @@ def handle_message(event):
 
         if c == "gsuite_count":
             result = CarouselColumn(
-                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        thumbnail_image_url="https://kiisfaq.pythonanywhere.com/static/images/line_school.png",
                         text="Gsuiteの設定",
                         title="Gsuiteの設定",
                         actions=[
@@ -769,7 +769,7 @@ def handle_message(event):
 
         if c == "nw_count":
             result = CarouselColumn(
-                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        thumbnail_image_url="https://kiisfaq.pythonanywhere.com/static/images/line_kiisfaq.png",
                         text="KIISNWの設定",
                         title="KIISNWの設定",
                         actions=[
@@ -783,7 +783,7 @@ def handle_message(event):
 
         if c == "share_count":
             result = CarouselColumn(
-                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        thumbnail_image_url="https://kiisfaq.pythonanywhere.com/static/images/line_kiisfaq.png",
                         text="共有フォルダ(share)の設定",
                         title="共有フォルダ(share)の設定",
                         actions=[
@@ -797,7 +797,7 @@ def handle_message(event):
 
         if c == "nw_password_count":
             result = CarouselColumn(
-                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        thumbnail_image_url="https://kiisfaq.pythonanywhere.com/static/images/line_kiisfaq.png",
                         text="ネットワークのパスワードについて",
                         title="ネットワークのパスワードについて",
                         actions=[
@@ -811,7 +811,7 @@ def handle_message(event):
 
         if c == "nw_miss_count":
             result = CarouselColumn(
-                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        thumbnail_image_url="https://kiisfaq.pythonanywhere.com/static/images/line_kiisfaq.png",
                         text="ネットワークのパスワードのトラブル",
                         title="ネットワークのパスワードのトラブル",
                         actions=[
@@ -825,7 +825,7 @@ def handle_message(event):
 
         if c == "office_id_count":
             result = CarouselColumn(
-                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        thumbnail_image_url="https://kiisfaq.pythonanywhere.com/static/images/line_kiisfaq.png",
                         text="officeでパスワードを聞かれるときの対応",
                         title="officeでパスワードを聞かれるときの対応",
                         actions=[
@@ -839,7 +839,7 @@ def handle_message(event):
 
         if c == "outlook_count":
             result = CarouselColumn(
-                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        thumbnail_image_url="https://kiisfaq.pythonanywhere.com/static/images/line_kiisfaq.png",
                         text="outlookの設定",
                         title="outlookの設定",
                         actions=[
@@ -853,7 +853,7 @@ def handle_message(event):
 
         if c == "webmail_count":
             result = CarouselColumn(
-                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        thumbnail_image_url="https://kiisfaq.pythonanywhere.com/static/images/line_kiisfaq.png",
                         text="webmailについて",
                         title="webmailについて",
                         actions=[
@@ -867,7 +867,7 @@ def handle_message(event):
 
         if c == "nwdrive_count":
             result = CarouselColumn(
-                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        thumbnail_image_url="https://kiisfaq.pythonanywhere.com/static/images/line_kiisfaq.png",
                         text="個人用ドライブの割り当てについて",
                         title="個人用ドライブの割り当てについて",
                         actions=[
@@ -880,7 +880,7 @@ def handle_message(event):
             columns.append(result)
         if c == "wifi_count":
             result = CarouselColumn(
-                        thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/no-img01.jpg",
+                        thumbnail_image_url="https://kiisfaq.pythonanywhere.com/static/images/line_kiisfaq.png",
                         text="Wi-fi(KIISWLAN)の設定",
                         title="Wi-Fi(KIISWLAN)の設定",
                         actions=[
