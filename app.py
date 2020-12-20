@@ -637,7 +637,7 @@ def handle_message(event):
                     mac_count = mac_count + 1
                     change_list.append("mac_count")
 
-            if m in ['nw', 'NW', 'Network', 'network', 'KIISWLAN', 'kiiswlan', 'LAN', 'Wifi', 'wi', 'Wi', '']:
+            if m in ['nw', 'NW', 'Network', 'network', 'KIISWLAN', 'kiiswlan', 'LAN', 'Wifi', 'wi', 'Wi', 'ネットワーク', '接続']:
                 if network_retry_count > 0:
                     network_retry_count = network_retry_count + 1
                     change_list.remove("network_retry_count")
