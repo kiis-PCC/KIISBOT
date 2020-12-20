@@ -268,6 +268,10 @@ def handle_message(event):
     webmail_count = 0 #webmail
     nwdrive_count = 0 #個人ドライブの割当
 
+    switch_count = 0 #電源が入らない
+    mac_count = 0 #macでwindows
+    network_retry_count = 0 #ネットワークが繋がらない
+
     # flex_message
     other_count = 0 #その他
     question_count = 0 #質問
@@ -612,6 +616,36 @@ def handle_message(event):
                 else:
                     nwdrive_count = nwdrive_count + 1
                     change_list.append("nwdrive_count")
+
+            if m in ['電源', 'スイッチ', 'ボタン', 'power', 'Power', 'windows', 'Windows']:
+                if switch_count > 0:
+                    switch_count = switch_count + 1
+                    change_list.remove("switch_count")
+                    change_list.insert(0, "switch_count")
+
+                else:
+                    switch_count = switch_count + 1
+                    change_list.append("switch_count")
+
+            if m in ['Mac', 'mac', 'macbook', 'Macbook', 'マック', 'bootcamp', 'OS', 'os']:
+                if mac_count > 0:
+                    mac_count = mac_count + 1
+                    change_list.remove("mac_count")
+                    change_list.insert(0, "mac_count")
+
+                else:
+                    mac_count = mac_count + 1
+                    change_list.append("mac_count")
+
+            if m in ['nw', 'NW', 'Network', 'network', 'KIISWLAN', 'kiiswlan', 'LAN', 'Wifi', 'wi', 'Wi', '']:
+                if network_retry_count > 0:
+                    network_retry_count = network_retry_count + 1
+                    change_list.remove("network_retry_count")
+                    change_list.insert(0, "network_retry_count")
+
+                else:
+                    network_retry_count = network_retry_count + 1
+                    change_list.append("network_retry_count")
             
             if m in ['インストール', 'install', 'Install', 'ウイルスバスター', 'ソフトウェア', 'ソフト', '一覧', '該当']:
                 exception_list.append(m)
@@ -891,6 +925,46 @@ def handle_message(event):
                         ]
                     )
             columns.append(result)
+        if c == "switch_count":
+            result = CarouselColumn(
+                        thumbnail_image_url="https://kiisfaq.pythonanywhere.com/static/images/line_kiisfaq.png",
+                        text="PCの電源が入らない時",
+                        title="PCの電源が入らない時",
+                        actions=[
+                            URIAction(
+                                uri="https://kiisfaq.pythonanywhere.com/power",
+                                label="push!"
+                            )
+                        ]
+                    )
+            columns.append(result)
+        if c == "mac_count":
+            result = CarouselColumn(
+                        thumbnail_image_url="https://kiisfaq.pythonanywhere.com/static/images/line_kiisfaq.png",
+                        text="MacでWindowsで動かしたい時",
+                        title="MacでWindowsを動かしたい時",
+                        actions=[
+                            URIAction(
+                                uri="https://kiisfaq.pythonanywhere.com/bootcamp",
+                                label="push!"
+                            )
+                        ]
+                    )
+            columns.append(result)
+        if c == "network_retry_count":
+            result = CarouselColumn(
+                        thumbnail_image_url="https://kiisfaq.pythonanywhere.com/static/images/line_kiisfaq.png",
+                        text="ネットワークに接続できない時",
+                        title="ネットワークに接続できない時",
+                        actions=[
+                            URIAction(
+                                uri="https://kiisfaq.pythonanywhere.com/bootcamp",
+                                label="push!"
+                            )
+                        ]
+                    )
+            columns.append(result)
+        
         
             
     if review:
