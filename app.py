@@ -678,7 +678,7 @@ def handle_message(event):
         if c == "kiis_count":
             result = CarouselColumn(
                         thumbnail_image_url="https://www.kiis.ac.jp/wp-content/themes/kiis/img/img_top_bnr02.jpg",
-                        text="九州情報大学のwebサイトです",
+                        text="九州情報大学のHPです",
                         title="九州情報大学",
                         actions=[
                             URIAction(
@@ -692,7 +692,7 @@ def handle_message(event):
         if c == "bus_count":
             result = CarouselColumn(
                         thumbnail_image_url="https://www.kiis.ac.jp/wp-content/uploads/2018/03/img_information_bus_01_02.jpg",
-                        text="九州情報大学バスの時刻表です",
+                        text="スクールバスの時刻表です",
                         title="バスの時刻表",
                         actions=[
                             URIAction(
@@ -790,8 +790,8 @@ def handle_message(event):
         if c == "gsuite_count":
             result = CarouselColumn(
                         thumbnail_image_url="https://kiisfaq.pythonanywhere.com/static/images/line_school.png",
-                        text="Gsuiteの設定",
-                        title="Gsuiteの設定",
+                        text="Gsuiteの設定はこちら",
+                        title="Gsuite",
                         actions=[
                             URIAction(
                                 uri="https://kiisfaq.pythonanywhere.com/gsuite",
@@ -804,8 +804,8 @@ def handle_message(event):
         if c == "nw_count":
             result = CarouselColumn(
                         thumbnail_image_url="https://kiisfaq.pythonanywhere.com/static/images/line_kiisfaq.png",
-                        text="KIISNWの設定",
-                        title="KIISNWの設定",
+                        text="学内でネットワークを使えるようになります",
+                        title="KIISNW",
                         actions=[
                             URIAction(
                                 uri="https://kiisfaq.pythonanywhere.com/kiisnw",
@@ -818,8 +818,8 @@ def handle_message(event):
         if c == "share_count":
             result = CarouselColumn(
                         thumbnail_image_url="https://kiisfaq.pythonanywhere.com/static/images/line_kiisfaq.png",
-                        text="共有フォルダ(share)の設定",
-                        title="共有フォルダ(share)の設定",
+                        text="共有フォルダ(share)の設定はこちら",
+                        title="共有フォルダ(share)",
                         actions=[
                             URIAction(
                                 uri="https://kiisfaq.pythonanywhere.com/share",
@@ -832,7 +832,7 @@ def handle_message(event):
         if c == "nw_password_count":
             result = CarouselColumn(
                         thumbnail_image_url="https://kiisfaq.pythonanywhere.com/static/images/line_kiisfaq.png",
-                        text="ネットワークのパスワードについて",
+                        text="有効期限等について説明します",
                         title="ネットワークのパスワードについて",
                         actions=[
                             URIAction(
@@ -846,7 +846,7 @@ def handle_message(event):
         if c == "nw_miss_count":
             result = CarouselColumn(
                         thumbnail_image_url="https://kiisfaq.pythonanywhere.com/static/images/line_kiisfaq.png",
-                        text="ネットワークのパスワードのトラブル",
+                        text="パスワード変更後に使えなくなった場合はこちら",
                         title="ネットワークのパスワードのトラブル",
                         actions=[
                             URIAction(
@@ -860,8 +860,8 @@ def handle_message(event):
         if c == "office_id_count":
             result = CarouselColumn(
                         thumbnail_image_url="https://kiisfaq.pythonanywhere.com/static/images/line_kiisfaq.png",
-                        text="officeでパスワードを聞かれるときの対応",
-                        title="officeでパスワードを聞かれるときの対応",
+                        text="Word,Excelなどでユーザー名とパスワードの入力が求められる時の対処法",
+                        title="Officeでパスワードを聞かれるとき",
                         actions=[
                             URIAction(
                                 uri="https://kiisfaq.pythonanywhere.com/office_id",
@@ -874,8 +874,8 @@ def handle_message(event):
         if c == "outlook_count":
             result = CarouselColumn(
                         thumbnail_image_url="https://kiisfaq.pythonanywhere.com/static/images/line_kiisfaq.png",
-                        text="outlookの設定",
-                        title="outlookの設定",
+                        text="2020年度以降に入学された方向けの内容です",
+                        title="Outlookの設定",
                         actions=[
                             URIAction(
                                 uri="https://kiisfaq.pythonanywhere.com/outlook",
@@ -888,8 +888,8 @@ def handle_message(event):
         if c == "webmail_count":
             result = CarouselColumn(
                         thumbnail_image_url="https://kiisfaq.pythonanywhere.com/static/images/line_kiisfaq.png",
-                        text="webmailについて",
-                        title="webmailについて",
+                        text="WebMailサービスの利用方法を説明します",
+                        title="WebMailについて",
                         actions=[
                             URIAction(
                                 uri="https://kiisfaq.pythonanywhere.com/webmail",
@@ -902,7 +902,7 @@ def handle_message(event):
         if c == "nwdrive_count":
             result = CarouselColumn(
                         thumbnail_image_url="https://kiisfaq.pythonanywhere.com/static/images/line_kiisfaq.png",
-                        text="個人用ドライブの割り当てについて",
+                        text="一人当たり1GBの容量を持つ、ネットワークドライブが利用できます。",
                         title="個人用ドライブの割り当てについて",
                         actions=[
                             URIAction(
@@ -915,7 +915,7 @@ def handle_message(event):
         if c == "wifi_count":
             result = CarouselColumn(
                         thumbnail_image_url="https://kiisfaq.pythonanywhere.com/static/images/line_kiisfaq.png",
-                        text="Wi-fi(KIISWLAN)の設定",
+                        text="学内どこでも使えるWi-fiです",
                         title="Wi-Fi(KIISWLAN)の設定",
                         actions=[
                             URIAction(
@@ -928,7 +928,7 @@ def handle_message(event):
         if c == "switch_count":
             result = CarouselColumn(
                         thumbnail_image_url="https://kiisfaq.pythonanywhere.com/static/images/line_kiisfaq.png",
-                        text="PCの電源が入らない時",
+                        text="PCが使えなくなったら試してみてください",
                         title="PCの電源が入らない時",
                         actions=[
                             URIAction(
@@ -941,7 +941,7 @@ def handle_message(event):
         if c == "mac_count":
             result = CarouselColumn(
                         thumbnail_image_url="https://kiisfaq.pythonanywhere.com/static/images/line_kiisfaq.png",
-                        text="MacでWindowsで動かしたい時",
+                        text="Bootcampの説明になります",
                         title="MacでWindowsを動かしたい時",
                         actions=[
                             URIAction(
@@ -954,7 +954,7 @@ def handle_message(event):
         if c == "network_retry_count":
             result = CarouselColumn(
                         thumbnail_image_url="https://kiisfaq.pythonanywhere.com/static/images/line_kiisfaq.png",
-                        text="ネットワークに接続できない時",
+                        text="うまく接続できない時に試してみてください",
                         title="ネットワークに接続できない時",
                         actions=[
                             URIAction(
