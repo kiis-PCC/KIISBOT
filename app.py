@@ -662,7 +662,12 @@ def handle_message(event):
             if m in ['質問']:
                 question_count = question_count + 1  
 
-            if '21' or '22' or '23' or '24' in m:
+            #学籍番号の頭２桁
+            #2030年になったらは23を追加
+            if '21' in m:
+                registration.append(m)
+            
+            if '22' in m:
                 registration.append(m)
             # if m in ['インストール', 'install', 'Install', 'ウイルスバスター', 'ソフトウェア', 'ソフト']:
             #     moji = TextSendMessage(text=mojiretsu + ' を検知しました。')
