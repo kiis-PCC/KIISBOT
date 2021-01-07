@@ -285,6 +285,9 @@ def handle_message(event):
     #レビュー
     review = []
 
+    #学籍番号登録
+    registration = []
+
     while node:
         if  "名詞," in node.feature:
             meishi_list.append(node.surface)
@@ -659,6 +662,8 @@ def handle_message(event):
             if m in ['質問']:
                 question_count = question_count + 1  
 
+            if '21' or '22' or '23' or '24' in m:
+                registration.append(m)
             # if m in ['インストール', 'install', 'Install', 'ウイルスバスター', 'ソフトウェア', 'ソフト']:
             #     moji = TextSendMessage(text=mojiretsu + ' を検知しました。')
                 
@@ -976,7 +981,18 @@ def handle_message(event):
         
         columns.clear()
         change_list.clear()
-        review.clear()    
+        review.clear()  
+
+    elif registration:
+        moji = TextSendMessage(text="登録ありがとうございます！")
+        #メッセージ送信
+        line_bot_api.reply_message(
+        event.reply_token,
+        [moji])
+        
+        columns.clear()
+        change_list.clear()
+        registration.clear()  
 
     elif exception_list:
         columns.clear()
