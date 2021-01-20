@@ -469,7 +469,7 @@ def handle_message(event):
                     service_count = service_count + 1
                     change_list.append("service_count")
 
-            if m in ['遠隔','遠隔授業','remote','授業']:
+            if m in ['遠隔','遠隔授業','remote','授業', '時間割', 'スケジュール']:
                 if enkaku_count > 0:
                     enkaku_count = enkaku_count + 1
                     change_list.remove("enkaku_count")
@@ -549,7 +549,7 @@ def handle_message(event):
                     nw_count = nw_count + 1
                     change_list.append("nw_count")
 
-            if m in ['share', 'シェア', 'フォルダ', 'folder', '共有']:
+            if m in ['share', 'シェア', 'フォルダ', 'folder', '共有', '設定']:
                 if share_count > 0:
                     share_count = share_count + 1
                     change_list.remove("share_count")
@@ -569,7 +569,7 @@ def handle_message(event):
                     nw_password_count = nw_password_count + 1
                     change_list.append("nw_password_count")
 
-            if m in ['nw', 'ネットワーク', 'パスワード', 'password', 'network', '変更', '後', '使用']:
+            if m in ['nw', 'ネットワーク', 'パスワード', 'password', 'network', '後', '使用']:
                 if nw_miss_count > 0:
                     nw_miss_count = nw_miss_count + 1
                     change_list.remove("nw_miss_count")
@@ -683,7 +683,7 @@ def handle_message(event):
         #     event.reply_token,
         #     TextSendMessage(text="どのような要件ですか？"))
 
-#カルーセル表示の順番を重みで入れ替える
+#カルーセルの中身
     for c in change_list:
         if c == "kiis_count":
             result = CarouselColumn(
