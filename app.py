@@ -600,7 +600,7 @@ def handle_message(event):
                                 outlook_count = outlook_count + 1
                                 change_list.append("outlook_count")
 
-            if m in ['web', 'Web', 'webmail', 'Webmail', 'WebMail', 'ウェブ', 'メール', '設定']:
+            if m in ['web', 'Web', 'webmail', 'Webmail', 'WebMail', 'mail', 'Mail', 'ウェブ', 'メール', '設定']:
                 if webmail_count > 0:
                     webmail_count = webmail_count + 1
                     change_list.remove("webmail_count")
