@@ -469,7 +469,7 @@ def handle_message(event):
                     service_count = service_count + 1
                     change_list.append("service_count")
 
-            if m in ['遠隔','遠隔授業','remote','授業', '時間割', 'スケジュール']:
+            if m in ['遠隔','遠隔授業','remote','授業', '時間割', 'スケジュール', "講義"]:
                 if enkaku_count > 0:
                     enkaku_count = enkaku_count + 1
                     change_list.remove("enkaku_count")
